@@ -12,7 +12,7 @@ router.get('/tutor-login', function(req, res, next) {
 router.post('/tutor-login', function(req, res, next) {
 
   tutorHelper.doLogin(req.body,()=>{
-    res.render('tutor-home'  );
+    res.render('tutor'  );
   })
   
 });
