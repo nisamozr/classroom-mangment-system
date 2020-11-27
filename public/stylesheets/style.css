@@ -1,5 +1,6 @@
 body {
   padding: 0;
+  margin: 0;
   font-size: .875rem;
 
 }
@@ -17,6 +18,32 @@ a {
 body, html {
   height: 100%;
 }
+.custom-shape-divider-top-1606467789 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1606467789 svg {
+  position: relative;
+  display: block;
+  width: calc(165% + 1.3px);
+  height: 144px;
+}
+
+.custom-shape-divider-top-1606467789 .shape-fill {
+  fill: #ffffff;
+}
+.card{
+ margin-top: 130px;
+ align-items: center;
+
+
+}
+
 
 .bg { 
   /* The image used */
@@ -29,6 +56,7 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 100px;
 }
 .tutororStudentimg img{
   width:200px;
@@ -40,12 +68,13 @@ body, html {
 /* login page */
 .login{
   width: 30%;
+  color: #ffffff;
  
- margin:50px auto;
+ margin:0 auto;
 }
 .login h1{
   text-align: center;
-  margin: 30px;
+  
 }
 
 
@@ -183,4 +212,15 @@ footer span{
 
 
   justify-content: center;
+}
+/* form add student */
+.form-group{
+  margin-bottom: 10px;
+
+}
+.forms{
+  width: 50%;
+}
+.btt{
+  text-align: center;
 }

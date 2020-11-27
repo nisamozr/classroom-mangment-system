@@ -8,6 +8,7 @@ var hbs = require('express-handlebars')
 var indexRouter = require('./routes/tutor');
 var usersRouter = require('./routes/users');
 var db=require('./config/connection')
+var session = require('express-session')
 
 var app = express();
 
@@ -21,6 +22,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret:'key',cookie:{maxAge:600000000000000000000}}))
 
 db.connect((err)=>{
   if(err)console.log("not connected err")
