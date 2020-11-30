@@ -74,8 +74,23 @@ module.exports = {
     getStudents:(tutorId)=>{
         return new Promise(async(resolve,reject)=>{
            let student = await db.get().collection(collection.Students_collection).find().toArray()
+
                 resolve(student)
           
+        })
+    },
+    editStudents:(studentId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.Students_collection).findOne({_id:objectId(studentId)}).then((student)=>{
+                resolve(student)
+            })
+        })
+    },
+    removeStudents:(studentId)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.Students_collection).removeOne({_id:objectId(studentId)}).then((student)=>{
+                resolve(student)
+            })
         })
     }
    

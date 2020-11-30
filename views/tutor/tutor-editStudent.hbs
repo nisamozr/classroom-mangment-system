@@ -1,0 +1,109 @@
+<div class="side d-flex flex-row bd-highlight">
+    <aside class="sidenav">
+        <ul>
+            <li>
+                <a href="/tutor">Home</a>
+
+            </li>
+            <li>
+                <a href="/tutor-Profile">Profile</a>
+
+            </li>
+            <li>
+                <a href="/tutor-students">Students</a>
+            </li>
+            <li>
+                <a href="/tutor-attendance">Attendance</a>
+
+            </li>
+            <li>
+                <a href="/tutor-assignment">assignment</a>
+
+            </li>
+            <li>
+                <a href="/tutor-notes">Notes</a>
+
+            </li>
+            <li>
+                <a href="/tutor-announcement">Announcement</a>
+            </li>
+            <li>
+                <a href="/tutor-events">Events</a>
+
+            </li>
+            <li>
+                <a href="/tutor-photos">Photos</a>
+
+            </li>
+        </ul>
+
+
+
+
+    </aside>
+
+    <div class="main">
+       <section>
+            <div class="container ">
+                <h2 class="text-center mb-4 ">Edit Student</h2>
+                <div class="row ">
+                    <div class="col-md-12 d-flex justify-content-center">
+
+                        <form class="forms" action="/tutor-editStudent" method="POST">
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="Name" id="inputEmail3"
+                                        placeholder="name" value="{{studentId.Name}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Class</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="Class" id="inputEmail3"
+                                        placeholder="Class of Student" value="{{studentId.Class}}">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" value="{{studentId.Email}}" name="Email" id="inputEmail3" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Mobile</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" value="{{studentId.Mobile}}" name="Mobile" id="inputEmail3" placeholder="Email">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Address</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="Address" id="inputEmail3"
+                                        placeholder="Address of Student" value="{{studentId.Address}}">
+                                        <input type="text" value="{{user._id}}" name="TutorCreatedBy" hidden>
+                                </div>
+                            </div>
+
+
+                           
+
+                            <div class="form-group row btt">
+                                <div class="col-sm-10">
+                                    <button type="submit" class="btn btn-success ">Edit</button>
+                                    <a href="/tutor-students" class="btn btn-danger ">Cancel</a>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+
+</div>
+</div>

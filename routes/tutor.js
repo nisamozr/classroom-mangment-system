@@ -61,6 +61,7 @@ router.get('/tutor-logout', (req, res) => {
 })
 router.get('/tutor', verifyLogin, (req, res) => {
   let user = req.session.user
+  
   res.render('tutor/tutor-home', { tutor: true, user });
   console.log(user)
 })
@@ -129,6 +130,27 @@ router.post('/tutor-addStudent',verifyLogin,(req,res)=>{
     res.redirect("/tutor-students")
   })
 })
+
+
+// edit student profile
+router.get('/tutor-editStudent:id', verifyLogin, async(req, res) => {
+  let studentId =await tutorHelper.editStudents(req.params.id) 
+  res.render('tutor/tutor-editStudent', { tutor: true,user:req.session.user,studentId });
+})
+
+
+// terminat student
+router.get('/tutor-removeStudent:id', verifyLogin, async(req, res) => {
+  await tutorHelper.removeStudents(req.params.id).then((response)=>{
+    res.redirect("/tutor-students")
+  })
+ 
+  
+ 
+  
+
+})
+
 
 
 
