@@ -134,9 +134,17 @@ router.post('/tutor-addStudent',verifyLogin,(req,res)=>{
 
 // edit student profile
 router.get('/tutor-editStudent:id', verifyLogin, async(req, res) => {
-  let studentId =await tutorHelper.editStudents(req.params.id) 
+  let studentId =await tutorHelper. getOneStudents(req.params.id) 
   res.render('tutor/tutor-editStudent', { tutor: true,user:req.session.user,studentId });
 })
+router.post('/tutor-editStudent:id', verifyLogin, async(req, res) => {
+  console.log(req.params.id)
+  await tutorHelper.editStudents(req.params.id,req.body).then(()=>{
+    res.redirect("/tutor-students")
+  })
+ 
+})
+
 
 
 // terminat student

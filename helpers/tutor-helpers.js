@@ -79,9 +79,24 @@ module.exports = {
           
         })
     },
-    editStudents:(studentId)=>{
+    getOneStudents:(studentId)=>{
         return new Promise((resolve,reject)=>{
             db.get().collection(collection.Students_collection).findOne({_id:objectId(studentId)}).then((student)=>{
+                resolve(student)
+            })
+        })
+    },
+    editStudents:(studentId,updateinfo)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.Students_collection).updateOne({_id:objectId(studentId)},{
+                $set:{
+                    Name:updateinfo.Name,
+                    Email:updateinfo.Email,
+                    Mobile:updateinfo.Mobile,
+                    Address:updateinfo.Address,
+                    Class:updateinfo.Class
+                }
+            }).then((student)=>{
                 resolve(student)
             })
         })
