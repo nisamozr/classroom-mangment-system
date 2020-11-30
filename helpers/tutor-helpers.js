@@ -31,5 +31,53 @@ module.exports = {
             }
         })
     },
+    getTutorInfo:(userid)=>{
+        return new Promise((resolve,reject)=>{
+            db.get().collection(collection.Tutor_collection).findOne({_id:objectId(userid)}).then((user)=>{
+                resolve(user)
+            })
+        })
+
+    },
+    editProfile:(proDetails,userid,proimage)=>{
+        return new Promise(async(resolve,reject)=>{
+            await db.get().collection(collection.Tutor_collection).updateOne({_id:objectId(userid)},{
+                $set:{
+                    Name:proDetails.Name,
+                    Email:proDetails.Email,
+                    Mobile:proDetails.Mobile,
+                    Address:proDetails.Address,
+                    Gender:proDetails.Gender,
+                    image:proimage
+                }
+            }).then((response)=>{
+                resolve()
+            })
+          
+        })
+    },
+    addStudents:(studentDetails)=>{
+        return new Promise(async(resolve,reject)=>{
+
+        //    let studentUser = await db.get().collection(collection.Students_collection).findOne(studentDetails.Mobile)
+        //     if(studentUser)
+            
+            await db.get().collection(collection.Students_collection).insertOne(studentDetails).then((data)=>{
+                resolve()
+            })
+            // else{
+            //     console.log("user is ther")
+           
+            // }
+        })
+    },
+    getStudents:(tutorId)=>{
+        return new Promise(async(resolve,reject)=>{
+           let student = await db.get().collection(collection.Students_collection).find().toArray()
+                resolve(student)
+          
+        })
+    }
+   
 
 }

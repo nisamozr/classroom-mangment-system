@@ -46,31 +46,46 @@
             <h3>Profile</h3>
             <div class="row">
                 <div class="col-md-12 col-lg-6 pro-pic">
-                    <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="">
+                    {{#if tutorprofil.image}}
+                  
+                    <img src='/uploded/tutor/profile/{{tutorprofil._id}}{{tutorprofil.image.name}}'alt="">   
+
+                    {{else}}
+                     <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="">   
+                    {{/if}}
+                   
+                    
+                    
                 </div>
                 <div class="col-md-12 col-lg-6 profile-details">
+                    
                     <table>
                         <tr>
                             <th>Name:</th>
-                            <td>Nisamudheen c</td>
+                            <td>{{tutorprofil.Name}}</td>
                         </tr>
                         <tr>
                             <th>Job:</th>
-                            <td>Tutor</td>
+                            <td>{{tutorprofil.Job}}</td>
+
+                        </tr>
+                         <tr>
+                            <th>Genter:</th>
+                            <td>{{tutorprofil.Gender}}</td>
 
                         </tr>
                         <tr>
                             <th>Address:</th>
-                            <td>Kiliveed(h), Attendance,Kannue,Kerala,India
+                            <td>{{tutorprofil.Address}}
                             </td>
                         </tr>
                         <tr>
                             <th>Mobile:</th>
-                            <td>987654321</td>
+                            <td>{{tutorprofil.Mobile}}</td>
                         </tr>
                         <tr>
                             <th>Email:</th>
-                            <td>tutor@gmail.com</td>
+                            <td>{{tutorprofil.Email}}</td>
                         </tr>
 
                     </table>
