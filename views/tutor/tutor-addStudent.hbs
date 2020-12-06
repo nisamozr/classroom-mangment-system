@@ -43,13 +43,20 @@
     </aside>
 
     <div class="main">
-       <section>
+        <section>
             <div class="container ">
                 <h2 class="text-center mb-4 ">Add Student</h2>
+                {{#if Err}}
+                <div class="alert alert-danger text-center  " role="alert">
+                    File name or Email or Mob already used!
+                </div>
+                {{/if}}
+
                 <div class="row ">
+
                     <div class="col-md-12 d-flex justify-content-center">
 
-                        <form class="forms" action="/tutor-addStudent" method="POST">
+                        <form class="forms" action="/tutor-addStudent" method="POST" enctype="multipart/form-data">
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
                                 <div class="col-sm-10">
@@ -67,13 +74,15 @@
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" class="form-control" name="Email" id="inputEmail3" placeholder="Email">
+                                    <input type="email" class="form-control" name="Email" id="inputEmail3"
+                                        placeholder="Email">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Mobile</label>
                                 <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="Mobile" id="inputEmail3" placeholder="Email">
+                                    <input type="number" class="form-control" name="Mobile" id="inputEmail3"
+                                        placeholder="Mobile No">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -81,7 +90,14 @@
                                 <div class="col-sm-10">
                                     <input type="text" class="form-control" name="Address" id="inputEmail3"
                                         placeholder="Address of Student">
-                                        <input type="text" value="{{user._id}}" name="TutorCreatedBy" hidden>
+                                    <input type="text" value="{{user._id}}" name="TutorCreatedBy" hidden>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Password</label>
+                                <div class="col-sm-10">
+                                    <input type="password" class="form-control" name="Password" id="inputEmail3"
+                                        placeholder="Password">
                                 </div>
                             </div>
 
@@ -91,24 +107,32 @@
                                     <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
                                     <div class="col-sm-10">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="Gender"
-                                                id="gridRadios1" value="Male" checked>
+                                            <input class="form-check-input" type="radio" name="Gender" id="gridRadios1"
+                                                value="Male" checked>
                                             <label class="form-check-label" for="gridRadios1">
                                                 Male
                                             </label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="Gender"
-                                                id="gridRadios2" value="Female">
+                                            <input class="form-check-input" type="radio" name="Gender" id="gridRadios2"
+                                                value="Female">
                                             <label class="form-check-label" for="gridRadios2">
-                                               Female
+                                                Female
                                             </label>
                                         </div>
 
                                     </div>
                                 </div>
                             </fieldset>
-                           
+                             <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-2 col-form-label">Photo </label>
+                                <div class="col-sm-10">
+                                    <input type="file" name="image" class="form-control" id="inputEmail3" required>
+                                </div>
+                            </div>
+
+
+
 
                             <div class="form-group row btt">
                                 <div class="col-sm-10">

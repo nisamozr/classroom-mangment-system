@@ -1,46 +1,42 @@
 <div class="side d-flex flex-row bd-highlight">
-    <aside class="sidenav">
-        <ul>
-            <li>
-                <a href="/tutor">Home</a>
-
-            </li>
-            <li>
-                <a href="/tutor-Profile">Profile</a>
-
-            </li>
-           <li>
-        <a href="/tutor-students">Students</a>
-      </li>
+  <aside class="sidenav">
+    <ul>
       <li>
-        <a href="/tutor-attendance">Attendance</a>
+        <a href="/student">Home</a>
 
       </li>
       <li>
-        <a href="/tutor-assignment">assignment</a>
+        <a href="/student/Profile">Profile</a>
+
+      </li>
+          <li>
+        <a href="/student/todays-task">Today's Task</a>
+
+      </li>
+    
+      <li>
+        <a href="/student/attendance">Attendance</a>
 
       </li>
       <li>
-        <a href="/tutor-notes">Notes</a>
+        <a href="/student/assignment">Assignment</a>
 
       </li>
       <li>
-        <a href="/tutor-announcement">Announcement</a>
-      </li>
-      <li>
-        <a href="/tutor-events">Events</a>
+        <a href="/student/notes">Notes</a>
 
       </li>
       <li>
-        <a href="/tutor-photos">Photos</a>
-
+        <a href="/student/announcement">Announcement</a>
       </li>
-        </ul>
+
+    </ul>
 
 
 
 
-    </aside>
+  </aside>
+
     <div class="main">
         <div class="container profil">
             <h3>Profile</h3>
@@ -62,30 +58,30 @@
                     <table>
                         <tr>
                             <th>Name:</th>
-                            <td>{{tutorprofil.Name}}</td>
+                            <td>{{studentprofil.Name}}</td>
                         </tr>
                         <tr>
-                            <th>Job:</th>
-                            <td>{{tutorprofil.Job}}</td>
+                            <th>Class:</th>
+                            <td>{{studentprofil.Class}}</td>
 
                         </tr>
                          <tr>
                             <th>Genter:</th>
-                            <td>{{tutorprofil.Gender}}</td>
+                            <td>{{studentprofil.Gender}}</td>
 
                         </tr>
                         <tr>
                             <th>Address:</th>
-                            <td>{{tutorprofil.Address}}
+                            <td>{{studentprofil.Address}}
                             </td>
                         </tr>
                         <tr>
                             <th>Mobile:</th>
-                            <td>{{tutorprofil.Mobile}}</td>
+                            <td>{{studentprofil.Mobile}}</td>
                         </tr>
                         <tr>
                             <th>Email:</th>
-                            <td>{{tutorprofil.Email}}</td>
+                            <td>{{studentprofil.Email}}</td>
                         </tr>
 
                     </table>
@@ -94,10 +90,10 @@
 
             </div>
             <div class="row">
-                <div class="col-lg-12 profil-edit">
-                   
-                    <a href="/tutor-profile-edit" class="btn btn-success">Edit</a>
-                </div>
+                    {{!-- <div class="col-lg-12 profil-edit">
+                    
+                        <a href="/tutor-profile-edit" class="btn btn-success">Edit</a>
+                    </div> --}}
             </div>
         </div>
     </div>

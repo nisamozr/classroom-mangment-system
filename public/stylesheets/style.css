@@ -4,10 +4,22 @@ body {
   font-size: .875rem;
 
 }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
 
 a {
   color: #00B7FF;
   font-size: .875rem;
+  text-decoration: none;
 }
 .navbar{
   background-color: #393843;
@@ -37,12 +49,12 @@ body, html {
 .custom-shape-divider-top-1606467789 .shape-fill {
   fill: #ffffff;
 }
-.card{
+/* .card{
  margin-top: 130px;
  align-items: center;
 
 
-}
+} */
 
 
 .bg { 

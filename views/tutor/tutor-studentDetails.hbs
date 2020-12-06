@@ -1,0 +1,104 @@
+<div class="side d-flex flex-row bd-highlight">
+    <aside class="sidenav">
+        <ul>
+            <li>
+                <a href="/tutor">Home</a>
+
+            </li>
+            <li>
+                <a href="/tutor-Profile">Profile</a>
+
+            </li>
+            <li>
+                <a href="/tutor-students">Students</a>
+            </li>
+            <li>
+                <a href="/tutor-attendance">Attendance</a>
+
+            </li>
+            <li>
+                <a href="/tutor-assignment">assignment</a>
+
+            </li>
+            <li>
+                <a href="/tutor-notes">Notes</a>
+
+            </li>
+            <li>
+                <a href="/tutor-announcement">Announcement</a>
+            </li>
+            <li>
+                <a href="/tutor-events">Events</a>
+
+            </li>
+            <li>
+                <a href="/tutor-photos">Photos</a>
+
+            </li>
+        </ul>
+
+
+
+
+    </aside>
+
+    <div class="main">
+        <div class="container ">
+            <div class="row p-5">
+                <div class="col-md-7">
+                     <table>
+                        <tr>
+                            <th>Name</th>
+                            <th>:</th>
+                            <td>fggjhhjgfhg</td>
+                        </tr>
+                        <tr>
+                            <th>Roll No</th>
+                             <th>:</th>
+                            <td>545</td>
+
+                        </tr>
+                         <tr>
+                            <th>Mobile</th>
+                             <th>:</th>
+                            <td>{{tutorprofil.Gender}}</td>
+
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                             <th>:</th>
+                            <td>{{tutorprofil.Address}}
+                            </td>
+                        </tr>
+                       
+                    </table>
+
+                </div>
+               <div class="col-md-5 pro-pic">
+                    {{#if tutorprofil.image}}
+                  
+                    <img src='/uploded/tutor/profile/{{tutorprofil._id}}{{tutorprofil.image.name}}'alt="">   
+
+                    {{else}}
+                     <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" style="width: 8rem; height: 8rem;" alt="">   
+                    {{/if}}
+                   
+                    
+                    
+                </div>
+                <hr class="mt-2">
+            </div>
+
+
+
+        </div>
+    </div>
+
+
+
+
+</div>
+</div>
+<script>
+
+</script>

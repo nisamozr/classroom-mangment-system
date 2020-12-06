@@ -14,30 +14,34 @@
     </svg>
   </div>
   <div class="container">
-    {{#if loginPass}}
-    <div class="alert alert-danger text-center  " role="alert">
-      Password not maching
-    </div>
-    {{/if}}
-    {{#if logiEnrr}}
-    <div class="alert alert-danger text-center  " role="alert">
-      There is no such user!
-    </div>
-    {{/if}}
+   
+    
 
     <div class=" login ">
-      <h1 class="mb-5">Tutor Login</h1>
-      <form action="/student/loginOtp" method="GET">
+      <h1 class="mb-5">Student OTP</h1>
+      
+      <form action="/student/login-otp" method="post">
         <div class="form-group">
+       
 
           <label for="exampleInputEmail1">Mobile Number</label>
-          <input type="number" class="form-control" name="Email" id="exampleInputEmail1" aria-describedby="emailHelp"
+           <input class="form-control mt-2" type="text"   placeholder="{{mobile}}" aria-label="Disabled input example" disabled>
+       <input type="hidden" value="{{otp}}" name="request_id">
+       
+       
+       <input type="hidden" value="{{mobile}}" name="Mobile" >
+       
+            
+        </div>
+         <div class="form-group">
+
+          <label for="exampleInputEmail1">Enter OTP</label>
+          <input type="number" class="form-control mt-2" name="Otp"  id="exampleInputEmail1" aria-describedby="emailHelp"
             required>
 
         </div>
-        
-
-        <button type="submit" class="btn btn-primary mt-2">Login</button>
+        <button type="submit" class="btn btn-primary mt-2">Verify OTP</button>
+         <a href="/" class="btn btn-warning ml-5 ">Change Number</a>
       </form>
     </div>
 

@@ -13,33 +13,35 @@
         class="shape-fill"></path>
     </svg>
   </div>
-  <div class="container">
-    {{#if loginPass}}
-    <div class="alert alert-danger text-center  " role="alert">
-      Password not maching
-    </div>
-    {{/if}}
-    {{#if logiEnrr}}
-    <div class="alert alert-danger text-center  " role="alert">
-      There is no such user!
-    </div>
-    {{/if}}
-
-    <div class=" login ">
-      <h1 class="mb-5">Tutor Login</h1>
-      <form action="login-otp" method="post">
-        <div class="form-group">
-
-          <label for="exampleInputEmail1">Mobile Number</label>
-          <input type="number" class="form-control" name="Email" id="exampleInputEmail1" aria-describedby="emailHelp"
-            required>
-
-        </div>
-        
-
-        <button type="submit" class="btn btn-primary mt-2">Login</button>
-      </form>
-    </div>
-
+  {{#if loginErr}}
+  <div class="alert alert-danger text-center  " role="alert">
+    There is no such user!
   </div>
+  {{/if}}
+  {{#if otpErr}}
+  <div class="alert alert-danger text-center  " role="alert">
+    Concurrent verifications to the same number are not allowed!
+  </div>
+  {{/if}}
+
+  <div class=" login ">
+    <h1 class="mb-5">Student Login</h1>
+    <form action="/student/login" method="post">
+      <div class="form-group">
+
+        <label for="exampleInputEmail1">Mobile Number</label>
+        <input type="tel" class="form-control mt-2" name="Mobile" id="exampleInputEmail1" aria-describedby="emailHelp"
+          required>
+        <a href="/student/login-email">login with email</a>
+      </div>
+
+
+
+      <button type="submit" class="btn btn-primary mt-2 mr-5">Login</button>
+      
+    </form>
+   
+  </div>
+
+</div>
 </div>

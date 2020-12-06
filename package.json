@@ -6,6 +6,7 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
@@ -14,9 +15,17 @@
     "express-session": "^1.17.1",
     "hbs": "^4.1.1",
     "http-errors": "~1.6.3",
+    "messagebird": "^3.5.0",
     "mongodb": "^3.6.3",
     "monodb": "^1.4.2",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.6"
+    "nexmo": "^2.9.1",
+    "nodemon": "^2.0.6",
+    "otp-generator": "^2.0.0",
+    "request": "^2.88.2",
+    "requests": "^0.3.0",
+    "speakeasy": "^2.0.0",
+    "telesignsdk": "^2.2.1",
+    "textmagic-rest-client": "^1.0.11"
   }
 }
