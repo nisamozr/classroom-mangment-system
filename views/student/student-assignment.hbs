@@ -43,6 +43,12 @@
       <div class="row topic">
         <div class="col-md-12 m-2 ">
           <h3 class="text-center">Assignment</h3>
+
+          {{#if TopicErr}}
+          <div class="alert alert-danger text-center  " role="alert">
+            Assignment Topic is not Maching
+          </div>
+          {{/if}}
         </div>
         <div class="row w-50  ">
           <form action="/student/assignment" method="post" enctype="multipart/form-data">
@@ -67,7 +73,10 @@
 
       </div>
       <div class="row mt-5">
-        <div class="col-md-12">
+        <div class="col-md-6">
+          <div class="text-center text-danger">
+            Assignment Topics
+          </div>
           <table class="table table-striped text-center">
             <thead>
               <tr>
@@ -82,9 +91,40 @@
               {{#each assignment.Assignment}}
               <tr>
                 <td>{{this.Topic}}</td>
-                  <td><a href="/{{this.FileAddress}}">{{this.FileName}}</a></td>
+                <td><a href="/{{this.FileAddress}}">{{this.FileName}}</a></td>
                 <td>{{this.PostAt}}
-                 
+
+                </td>
+
+
+              </tr>
+              {{/each}}
+
+
+            </tbody>
+          </table>
+        </div>
+         <div class="col-md-6">
+            <div class="text-center text-danger">
+            Submitted Assignment 
+          </div>
+          <table class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th scope="col" width=30%>Topic</th>
+                <th scope="col" width=50%>File</th>
+                <th scope="col" width=20%>Date</th>
+
+
+              </tr>
+            </thead>
+            <tbody>
+              {{#each Subassignment.Assignment}}
+              <tr>
+                <td>{{this.Topic}}</td>
+                <td><a href="/{{this.FileAddress}}">{{this.FileName}}</a></td>
+                <td>{{this.PostAt}}
+
                 </td>
 
 

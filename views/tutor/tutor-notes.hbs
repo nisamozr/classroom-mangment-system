@@ -47,26 +47,49 @@
             <div class="row topic">
                 <div class="col-md-12 m-2 ">
                     <h3 class="text-center">Notes</h3>
+                    {{#if err}}
+                    <div class="alert alert-danger text-center  " role="alert">
+                        Password not maching
+                    </div>
+                    {{/if}}
                 </div>
                 <div class="row w-50  ">
-                    
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Topics</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Enter you Topics">
-                    </div>
+                    <form action="/tutor-notes" method="post" enctype="multipart/form-data">
 
-                    <div class="mb-3">
-                        <label for="formFileMultiple" class="form-label"> files </label>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple>
-                    </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Topics</label>
+                            <input type="text" class="form-control" name="Topic" id="exampleFormControlInput1"
+                                placeholder="Enter you Topics" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="formFileMultiple" class="form-label"> Document </label>
+                            <input class="form-control" name="Document" type="file" id="formFileMultiple" required
+                                multiple>
+                        </div>
+                        <div class="mb-3">
+
+                            <label for="formFileMultiple" class="form-label"> Video File </label>
+                            <input class="form-control" name="VideoFile" id="Document" type="file" onchange="video()"  multiple>
+                        </div>
+                        <div class=" text-center">
+
+                            <label for="formFileMultiple" class="form-label "> <b>OR</b> </label>
+
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Youtub link</label>
+                            <input type="url" class="form-control" name="Link" id="Link"
+                                placeholder="link">
+                        </div>
 
 
 
-                    
-    <button type="button" class="btn btn-primary">save</button>
+
+                        <button type="submit" class="btn btn-primary">Post</button>
+                    </form>
                 </div>
-                
+
 
             </div>
             <div class="row mt-5">
@@ -81,31 +104,53 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each nots.Notes}}
                             <tr>
-                                <td>selection sort</td>
-                                <td><a href="">selection_sort.pdf</a></td>
-                                <td> <a href=""> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z"></path><path d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z"></path><path d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z"></path></svg></a></td>
+                                <td>{{this.Topic}}</td>
+                                <td>Document:<a href="">{{this.DocumentName}} </a>
+                                    {{#if this.VideoAddress}}
+                                    <br>
+                                    Video: <a href="{{this.VideoAddress}}"><svg width="2em" height="2em"
+                                            viewBox="0 0 16 16" class="bi bi-file-earmark-play-fill" fill="currentColor"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM6 6.883v4.234a.5.5 0 0 0 .757.429l3.528-2.117a.5.5 0 0 0 0-.858L6.757 6.454a.5.5 0 0 0-.757.43z" />
+                                        </svg></a> {{/if}}
+                                    {{#if this.Link}}
+                                    <br>
+                                    Youtub: <a href="{{this.Link}}"><svg width="2em" height="2em" viewBox="0 0 16 16"
+                                            class="bi bi-link" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
+                                            <path
+                                                d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
+                                        </svg></a>
+                                    {{/if}}
+                                </td>
+                                <td> <a href="/tutor-delet-note{{this._id}}"
+                                        onclick="return confirm('Do you whant to remove this{{this.Topic}}?')"> <svg
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                            height="24">
+                                            <path fill-rule="evenodd"
+                                                d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z">
+                                            </path>
+                                            <path
+                                                d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z">
+                                            </path>
+                                            <path
+                                                d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z">
+                                            </path>
+                                        </svg></a></td>
 
                             </tr>
-                            <tr>
-                                <td>bubble sort</td>
-                                <td><a href="">bubbul.pdf</a></td>
-                                <td> <a href=""> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z"></path><path d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z"></path><path d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z"></path></svg></a></td>
-
-                            </tr>
-                            <tr>
-                                <td>binery tree</td>
-                                <td><a href="">tree.pdf</a> </td>
-                                <td> <a href=""> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill-rule="evenodd" d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z"></path><path d="M4.997 6.178a.75.75 0 10-1.493.144L4.916 20.92a1.75 1.75 0 001.742 1.58h10.684a1.75 1.75 0 001.742-1.581l1.413-14.597a.75.75 0 00-1.494-.144l-1.412 14.596a.25.25 0 01-.249.226H6.658a.25.25 0 01-.249-.226L4.997 6.178z"></path><path d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z"></path></svg></a></td>
-
-                            </tr>
+                            {{/each}}
 
                         </tbody>
                     </table>
                 </div>
             </div>
-            
-            
+
+
 
         </div>
     </div>
@@ -115,3 +160,16 @@
 
 </div>
 </div>
+<script>
+  let file =document.getElementById("Document")
+  let link = document.getElementById("Link")
+  video(){
+       if(file.files.length > 0){
+      link.disabled = true;
+      
+  }
+
+  }
+ 
+
+</script>

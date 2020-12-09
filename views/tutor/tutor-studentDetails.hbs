@@ -46,47 +46,127 @@
         <div class="container ">
             <div class="row p-5">
                 <div class="col-md-7">
-                     <table>
+                    <table>
                         <tr>
                             <th>Name</th>
                             <th>:</th>
-                            <td>fggjhhjgfhg</td>
+                            <td>{{studentId.Name}}</td>
                         </tr>
                         <tr>
                             <th>Roll No</th>
-                             <th>:</th>
-                            <td>545</td>
+                            <th>:</th>
+                            <td></td>
 
                         </tr>
-                         <tr>
+                        <tr>
                             <th>Mobile</th>
-                             <th>:</th>
-                            <td>{{tutorprofil.Gender}}</td>
+                            <th>:</th>
+                            <td>{{studentId.Mobile}}</td>
 
                         </tr>
                         <tr>
                             <th>Email</th>
-                             <th>:</th>
-                            <td>{{tutorprofil.Address}}
+                            <th>:</th>
+                            <td>{{studentId.Email}}
                             </td>
                         </tr>
-                       
+
                     </table>
 
                 </div>
-               <div class="col-md-5 pro-pic">
-                    {{#if tutorprofil.image}}
-                  
-                    <img src='/uploded/tutor/profile/{{tutorprofil._id}}{{tutorprofil.image.name}}'alt="">   
+                <div class="col-md-5 pro-pic">
+                    {{#if studentId.image}}
+
+                    <img src='{{studentId.imagelocation}}' alt="">
 
                     {{else}}
-                     <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" style="width: 8rem; height: 8rem;" alt="">   
+                    <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"
+                        style="width: 8rem; height: 8rem;" alt="">
                     {{/if}}
-                   
-                    
-                    
+
+
+
                 </div>
                 <hr class="mt-2">
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <h3>Exams</h3>
+                    </div>
+                    <table class="table table-responsive table-hover table-dark text-center">
+                        <thead>
+                            <tr>
+
+                                <th scope="col">Topic</th>
+                                <th scope="col">File</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+
+                                <td>Mark</td>
+                                <td><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-fill"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0H4zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z" />
+                                    </svg></td>
+                                <td>@mdo</td>
+                            </tr>
+                            <tr>
+
+                                <td>Jacob</td>
+                                <td><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-fill"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0H4zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z" />
+                                    </svg></td>
+                                <td>@fat</td>
+                            </tr>
+                            <tr>
+
+                                <td>Thornton</td>
+                                <td><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-fill"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0H4zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z" />
+                                    </svg></td>
+                                <td>@twitter</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <h3>Assignment</h3>
+                    </div>
+                    <table class="table table-responsive table-hover table-dark text-center">
+                        <thead>
+                            <tr>
+
+                                <th scope="col">Topic</th>
+                                <th scope="col">File</th>
+                                <th scope="col">Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each studentId.Assignment}}
+                            <tr>
+
+                                <td>{{this.Topic}}</td>
+                                <td><a href="{{this.FileAddress}}"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-file-earmark-fill"
+                                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0H4zm5.5 1.5v2a1 1 0 0 0 1 1h2l-3-3z" />
+                                    </svg></a></td>
+                                <td>{{this.PostAt}}</td>
+                            </tr>
+                            {{/each}}
+                           
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
 
@@ -99,6 +179,3 @@
 
 </div>
 </div>
-<script>
-
-</script>

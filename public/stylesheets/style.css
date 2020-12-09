@@ -2,6 +2,7 @@ body {
   padding: 0;
   margin: 0;
   font-size: .875rem;
+  
 
 }
 /* Chrome, Safari, Edge, Opera */
@@ -94,7 +95,7 @@ body, html {
 /* aside */
 
 .sidenav {
-  height: 100vh;
+  height: 100%;
   width: 300px;
   
   background-color: #42414e;
@@ -136,6 +137,7 @@ body, html {
 .main{
   padding: 20px 10px;
   width: 100%;
+  height: 100vh;
  
   margin-left: 300px;
 }

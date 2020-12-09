@@ -196,16 +196,26 @@ router.get('/attendance', verifyLogin, function (req, res, next) {
 // assinment
 router.get('/assignment', verifyLogin, async function (req, res, next) {
   let assignment = await studentHelpers.getAssignment(req.session.student.TutorCreatedBy)
-  res.render('student/student-assignment', { students: true, student: req.session.student, assignment });
+  let Subassignment = await studentHelpers.getSUBAssignment(req.session.student._id)
+  res.render('student/student-assignment', { students: true, student: req.session.student, assignment,Subassignment});
+
 });
 router.post('/assignment', verifyLogin, (req, res) => {
   var fileAddress = "uploded/assignment/byStudent/" + new Date() + req.files.AssignmentFile.name
   let AssFile = req.files.AssignmentFile
   let fileName = req.files.AssignmentFile.name
+  let tutorId = req.session.student.TutorCreatedBy
   AssFile.mv("./public/" + fileAddress, (err, done) => {
     if (!err) {
-      studentHelpers.postAssignment(req.session.student._id, req.body, fileAddress, fileName).then(() => {
+      studentHelpers.postAssignment(req.session.student._id,tutorId, req.body, fileAddress, fileName).then(async(response) => {
+        if(response.Status){
+          let TopicErr =true
+          let assignment = await studentHelpers.getAssignment(req.session.student.TutorCreatedBy)
+          let Subassignment = await studentHelpers.getSUBAssignment(req.session.student._id)
+          res.render('student/student-assignment', { students: true, student: req.session.student, assignment,TopicErr,Subassignment});
+        }else{
         res.redirect("/student/assignment")
+        }
       })
     }
     else {

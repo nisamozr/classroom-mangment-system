@@ -136,13 +136,7 @@ module.exports = {
         })
     },
     postAssignment: (tutorId, assinfo, FileAddress, fileName) => {
-        let Assignment = {
-            Topic: assinfo.Topic,
-            FileName: fileName,
-            FileAddress: FileAddress,
-            PostAt: new Date(),
-            PostBy:tutorId,
-        }
+      
         return new Promise(async (resolve, reject) => {
 
             await db.get().collection(collection.Tutor_collection).updateOne({ _id: objectId(tutorId) },
@@ -151,14 +145,14 @@ module.exports = {
                         "Assignment": {
                             "_id": new objectId(),
                             "Topic": assinfo.Topic,
-                            "FileName":fileName,
-                            "FileAddress": FileAddress,                             
-                            "PostAt": new Date(Date.now()).toLocaleString().split(',')[0]                         
+                            "FileName": fileName,
+                            "FileAddress": FileAddress,
+                            "PostAt": new Date(Date.now()).toLocaleString().split(',')[0]
                         }
                     }
                 }
             )
-            // await db.get().collection(collection.Assignment_collection).insertOne(Assignment)
+                // await db.get().collection(collection.Assignment_collection).insertOne(Assignment)
                 .then((response) => {
                     console.log(response)
                     resolve(response)
@@ -166,17 +160,63 @@ module.exports = {
                 })
         })
     },
-    removeAssignement: (id,tutorid) => {
-        console.log(id,tutorid)
-        return new Promise(async(resolve, reject) => {
-           await db.get().collection(collection.Tutor_collection).update(
-            {'_id': objectId(tutorid)}, 
-            { $pull: { Assignment : { _id: objectId(id) } } }).then((student) => {
-                resolve(student)
-            })
+    removeAssignement: (id, tutorid) => {
+        console.log(id, tutorid)
+        return new Promise(async (resolve, reject) => {
+            await db.get().collection(collection.Tutor_collection).update(
+                { '_id': objectId(tutorid) },
+                { $pull: { Assignment: { _id: objectId(id) } } }).then((student) => {
+                    resolve(student)
+                })
         })
     },
-   
+    addNots: (userid, userPost, DocumentName,DocumentAddress, videoname,VideoAddress) => {
+
+        return new Promise(async(resolve, reject) => {
+
+
+            await db.get().collection(collection.Tutor_collection).updateOne({ _id: objectId(userid._id)},
+                {
+                    $push: {
+                        "Notes": {
+                            "_id": new objectId(),
+                            "Topic": userPost.Topic,
+                            "DocumentName": DocumentName,
+                            "DocumentAddress": DocumentAddress,
+                            "VideoName": videoname,
+                            "VideoAddress": VideoAddress,
+                            "Link":userPost.Link,
+                            "PostAt": new Date(Date.now()).toLocaleString().split(',')[0]
+
+
+                        }
+                    }
+
+                }
+
+            )
+
+        .then((response) => {
+            console.log(response)
+            resolve(response)
+
+        })
+    })
+
+
+
+    },
+    removeNotes:(id, tutorid) => {
+       
+        return new Promise(async (resolve, reject) => {
+            await db.get().collection(collection.Tutor_collection).update(
+                { '_id': objectId(tutorid) },
+                { $pull: { Notes: { _id: objectId(id) } } }).then((student) => {
+                    resolve(student)
+                })
+        })
+    },
+
 
 
 

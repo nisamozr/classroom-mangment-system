@@ -9,24 +9,24 @@ module.exports = {
     verifyNumbert: (userDtails) => {
         return new Promise(async (resolve, reject) => {
             let response = {}
-            let user = await db.get().collection(collection.Students_collection).findOne({Mobile: userDtails.Mobile })
-            
+            let user = await db.get().collection(collection.Students_collection).findOne({ Mobile: userDtails.Mobile })
+
             if (user) {
-                    response.Status = true
-                    response.err =false
-                    resolve(response)
+                response.Status = true
+                response.err = false
+                resolve(response)
             }
             else {
                 console.log("not user")
                 response.Status = false
-                response.err =true
+                response.err = true
                 resolve(response)
             }
         })
     },
     doLoginEmail: (userDtails) => {
         return new Promise(async (resolve, reject) => {
-           
+
             let student = await db.get().collection(collection.Students_collection).findOne({ Email: userDtails.Email })
 
             if (student) {
@@ -50,16 +50,16 @@ module.exports = {
             }
         })
     },
-    dologin:(loginDetails)=>{
-        return new Promise(async(resolve,reject)=>{
-            let student = await db.get().collection(collection.Students_collection).findOne({Mobile:loginDetails.Mobile})
-            
+    dologin: (loginDetails) => {
+        return new Promise(async (resolve, reject) => {
+            let student = await db.get().collection(collection.Students_collection).findOne({ Mobile: loginDetails.Mobile })
+
             if (student) {
-                    // console.log("password mach")
-                    response.student = student
-                    response.Status = true
-                    resolve(response)
-               
+                // console.log("password mach")
+                response.student = student
+                response.Status = true
+                resolve(response)
+
             }
             else {
                 console.log("not user")
@@ -68,48 +68,63 @@ module.exports = {
             }
         })
     },
-    getStudentInfo:(userid)=>{
-        return new Promise((resolve,reject)=>{
-            db.get().collection(collection.Students_collection).findOne({_id:objectId(userid)}).then((user)=>{
+    getStudentInfo: (userid) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.Students_collection).findOne({ _id: objectId(userid) }).then((user) => {
                 resolve(user)
             })
         })
 
     },
-    getAssignment:(tutorid)=>{
-        return new Promise((resolve,reject)=>{
-            db.get().collection(collection.Tutor_collection).findOne({_id:objectId(tutorid)}).then((user)=>{
+    getAssignment: (tutorid) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.Tutor_collection).findOne({ _id: objectId(tutorid) }).then((user) => {
                 resolve(user)
             })
         })
 
     },
-    postAssignment: (tutorId, assinfo, FileAddress, fileName) => {
-       
+    getSUBAssignment:(StudenId) => {
+        return new Promise((resolve, reject) => {
+            db.get().collection(collection.Students_collection).findOne({ _id: objectId(StudenId) }).then((user) => {
+                resolve(user)
+            })
+        })
+
+    },
+    postAssignment: (studentId, totorId, assinfo, FileAddress, fileName) => {
+let response ={}
         return new Promise(async (resolve, reject) => {
-
-            await db.get().collection(collection.Students_collection).updateOne({ _id: objectId(tutorId) },
-                {
-                    $push: {
-                        "Assignment": {
-                            "_id": new objectId(),
-                            "Topic": assinfo.Topic,
-                            "FileName":fileName,
-                            "FileAddress": FileAddress,                             
-                            "PostAt": new Date(Date.now()).toLocaleString().split(',')[0]                         
+            let topic = await db.get().collection(collection.Tutor_collection).findOne({Assignment:{ $elemMatch: {Topic:assinfo.Topic} }})
+            if(topic) {
+                db.get().collection(collection.Students_collection).updateOne({ _id: objectId(studentId) },
+                    {
+                        $push: {
+                            "Assignment": {
+                                "_id": new objectId(),
+                                "Topic": assinfo.Topic,
+                                "FileName": fileName,
+                                "FileAddress": FileAddress,
+                                "PostAt": new Date(Date.now()).toLocaleString().split(',')[0]
+                            }
                         }
                     }
-                }
-            )
-            // await db.get().collection(collection.Assignment_collection).insertOne(Assignment)
-                .then((response) => {
-                    console.log(response)
-                    resolve(response)
+                )
+                    // await db.get().collection(collection.Assignment_collection).insertOne(Assignment)
+                    .then((response) => {
+                        console.log(response)
+                        resolve(response)
 
-                })
+                    })
+            }
+            else {
+                console.log("not user")
+            response.Status =true
+                resolve(response)
+            }
         })
     },
-   
-   
+
+
 
 }
