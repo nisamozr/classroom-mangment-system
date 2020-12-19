@@ -50,35 +50,49 @@
 
             </div>
             <div class="row mt-5">
-                <div class="col-md-12">
+                <div class="col-md-12 ">
                     <table class="table table-striped text-center">
                         <thead>
                             <tr>
-                                <th scope="col" width=50%>Topic</th>
-                                <th scope="col" width=50%>File</th>
-                                
+                                <th scope="col" >Topic</th>
+                                <th scope="col" >File</th>
+                                <th scope="col" >Date</th>
+                               
 
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each notes.Notes}}
                             <tr>
-                                <td>selection sort</td>
-                                <td><a href="">selection_sort.pdf</a></td>
-                              
-
-                            </tr>
-                            <tr>
-                                <td>bubble sort</td>
-                                <td><a href="">bubbul.pdf</a></td>
+                                <td>{{this.Topic}}</td>
+                                <td>Document:<a href="/{{this.DocumentAddress}}">{{this.DocumentName}} </a>
+                                    {{#if this.VideoAddress}}
+                                    <br>
+                                    <input type="text" value="{{this._id}}" name="videoId" hidden>
+                                    Video:<svg width="2em" height="2em"
+                                            viewBox="0 0 16 16" class="bi bi-file-earmark-play-fill" fill="currentColor"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M2 2a2 2 0 0 1 2-2h5.293A1 1 0 0 1 10 .293L13.707 4a1 1 0 0 1 .293.707V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm7.5 1.5v-2l3 3h-2a1 1 0 0 1-1-1zM6 6.883v4.234a.5.5 0 0 0 .757.429l3.528-2.117a.5.5 0 0 0 0-.858L6.757 6.454a.5.5 0 0 0-.757.43z" />
+                                        </svg>{{/if}}
+                                    {{#if this.Link}}
+                                    <br>
+                                    Youtub: <a href="/{{this.Link}}"><svg width="2em" height="2em" viewBox="0 0 16 16"
+                                            class="bi bi-link" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                            <path
+                                                d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
+                                            <path
+                                                d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
+                                        </svg></a>
+                                    {{/if}}
+                                </td>
+                                <td>
+                                  {{this.PostAt}}
+                                </td>
                                
 
                             </tr>
-                            <tr>
-                                <td>binery tree</td>
-                                <td><a href="">tree.pdf</a> </td>
-                               
-
-                            </tr>
+                            {{/each}}
 
                         </tbody>
                     </table>
@@ -95,3 +109,17 @@
 
 </div>
 </div>
+
+ {{!-- $('#video').click(function(event) { 
+    event.preventDefault(); 
+    $.ajax({
+        url: $(this).attr('href'),
+         data: {
+               _id:this._id
+            },
+        success: function(response) {
+            alert(response);
+        }
+    });
+    return false; // for good measure
+}); --}}

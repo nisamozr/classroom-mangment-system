@@ -4,6 +4,7 @@ var collection = require('../config/collection')
 const { use } = require('../routes/tutor')
 const { response } = require('express')
 var objectId = require('mongodb').ObjectID
+var dateFormat = require('dateformat');
 module.exports = {
     doLogin: (userDtails) => {
         return new Promise(async (resolve, reject) => {
@@ -68,6 +69,7 @@ module.exports = {
             image: proimage,
             imagelocation: filelocation,
             TutorCreatedBy: studentDetails.TutorCreatedBy
+            
 
         }
         return new Promise(async (resolve, reject) => {
@@ -112,6 +114,7 @@ module.exports = {
             })
         })
     },
+  
     editStudents: (studentId, updateinfo) => {
         return new Promise((resolve, reject) => {
             db.get().collection(collection.Students_collection).updateOne({ _id: objectId(studentId) }, {
@@ -147,7 +150,8 @@ module.exports = {
                             "Topic": assinfo.Topic,
                             "FileName": fileName,
                             "FileAddress": FileAddress,
-                            "PostAt": new Date(Date.now()).toLocaleString().split(',')[0]
+                            "PostAt": dateFormat(new Date(), "dd-mm-yyyy h:MM"),
+                              "PostDate": new Date(Date.now()).toLocaleString().split(',')[0],
                         }
                     }
                 }
@@ -158,6 +162,12 @@ module.exports = {
                     resolve(response)
 
                 })
+        })
+    },
+      GetAssinment: (tutorId) => {
+        return new Promise(async(resolve, reject) => {
+           let ass= await db.get().collection(collection.Tutor_collection).find({_id:objectId(tutorId)}).sort({Assignment : -1}).toArray()
+            resolve(ass)
         })
     },
     removeAssignement: (id, tutorid) => {
@@ -186,7 +196,8 @@ module.exports = {
                             "VideoName": videoname,
                             "VideoAddress": VideoAddress,
                             "Link":userPost.Link,
-                            "PostAt": new Date(Date.now()).toLocaleString().split(',')[0]
+                            "PostDate": new Date(Date.now()).toLocaleString().split(',')[0],
+                            "PostAt": dateFormat(new Date(), "dd-mm-yyyy h:MM")
 
 
                         }
@@ -213,6 +224,62 @@ module.exports = {
                 { '_id': objectId(tutorid) },
                 { $pull: { Notes: { _id: objectId(id) } } }).then((student) => {
                     resolve(student)
+                })
+        })
+    },
+    getAttendance:(date) => {
+      
+        return new Promise(async (resolve, reject) => {
+            let att = await db.get().collection(collection.Students_collection).aggregate([
+                { $unwind: "$Attendance" },
+                { $match: {  "Attendance.Date": date } },
+                { $project: { _id: 0,Name:1, "Attendance.Attendance": 1,"Attendance.Date":1 } }
+             ])
+            // aggregate([
+            //     {$match:{"Attendance.Date":date}},
+            //     {$project:
+                
+            //              {
+                     
+            //                 Name: 1,
+            //                  Mobile:1,
+            //                  Attendance:[ { $eq: [ "$Date", date ] }]
+                          
+            //              }
+            //      },
+                
+
+            //    ])
+            
+            
+            .toArray()
+            resolve(att)
+          
+        })
+    },
+    postPhoto: (tutorId, photoinfo, FileAddress, fileName) => {
+      
+        return new Promise(async (resolve, reject) => {
+
+            await db.get().collection(collection.Tutor_collection).updateOne({ _id: objectId(tutorId) },
+                {
+                    $push: {
+                        "Photos": {
+                            "_id": new objectId(),
+                            "Topic": photoinfo.Topic,
+                            "FileName": fileName,
+                            "FileAddress": FileAddress,
+                            "PostAt": dateFormat(new Date(), "dd-mm-yyyy h:MM"),
+                              "PostDate": new Date(Date.now()).toLocaleString().split(',')[0],
+                        }
+                    }
+                }
+            )
+                // await db.get().collection(collection.Assignment_collection).insertOne(Assignment)
+                .then((response) => {
+                    console.log(response)
+                    resolve(response)
+
                 })
         })
     },

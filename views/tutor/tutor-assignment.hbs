@@ -50,20 +50,20 @@
                 </div>
                 <div class="row w-50  ">
                     <form action="/tutor-assignment" method="post" enctype="multipart/form-data">
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Topics</label>
-                        <input type="text" class="form-control" name="Topic" id="exampleFormControlInput1"
-                            placeholder="Enter you Topics">
-                    </div>
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Topics</label>
+                            <input type="text" class="form-control" name="Topic" id="exampleFormControlInput1"
+                                placeholder="Enter you Topics" required>
+                        </div>
 
-                    <div class="mb-3">
-                        <label for="formFileMultiple" class="form-label"> files </label>
-                        <input class="form-control" type="file" name="AssignmentFile" id="formFileMultiple" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Post</button>
-                   
+                        <div class="mb-3">
+                            <label for="filePdf" class="form-label"> files </label>
+                            <input class="form-control" type="file" name="AssignmentFile"  required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Post</button>
+
                 </div>
-                 </form>
+                </form>
 
 
             </div>
@@ -83,7 +83,9 @@
                             <tr>
                                 <td>{{this.Topic}}</td>
                                 <td><a href="{{this.FileAddress}}">{{this.FileName}}</a></td>
-                                <td> <a href="/tutor-delet-assingnment{{this._id}}"  onclick="return confirm('Do you whant to remove this{{this.FileName}}?')"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
+                                <td> <a href="/tutor-delet-assingnment{{this._id}}"
+                                        onclick="return confirm('Do you whant to remove this{{this.FileName}}?')"> <svg
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24"
                                             height="24">
                                             <path fill-rule="evenodd"
                                                 d="M16 1.75V3h5.25a.75.75 0 010 1.5H2.75a.75.75 0 010-1.5H8V1.75C8 .784 8.784 0 9.75 0h4.5C15.216 0 16 .784 16 1.75zm-6.5 0a.25.25 0 01.25-.25h4.5a.25.25 0 01.25.25V3h-5V1.75z">
@@ -98,8 +100,8 @@
 
                             </tr>
                             {{/each}}
-                            
-                           
+
+
 
                         </tbody>
                     </table>
@@ -116,3 +118,5 @@
 
 </div>
 </div>
+
+   

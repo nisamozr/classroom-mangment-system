@@ -42,7 +42,99 @@
 
   </aside>
 
-  {{>tutor-dashboard}}
+  <div class="main">
+    <div class="container">
+      <div class="text-danger ">
+    
+      </div>
+
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+             
+              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+             
+              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+            </ol>
+            <div class="carousel-inner">
+              
+              <div class="carousel-item active">
+                <a href="/toutor-photoAlbum">
+                <img
+                  src="/{{photo1.FileAddress }}"
+                  class="d-block w-100" alt="...">
+                     </a>
+              </div>
+           
+               
+              <div class="carousel-item">
+                <a href="/toutor-photoAlbum">
+                <img src="{{photo2.FileAddress }}"
+                  class="d-block w-100" alt="...">
+                  </a>
+              </div>
+              <div class="carousel-item">
+                <a href="/toutor-photoAlbum">
+                <img
+                  src="{{photo3.FileAddress }}"
+                  class="d-block" alt="...">
+                  </a>
+              </div>
+               <div class="carousel-item">
+                 <a href="/toutor-photoAlbum">
+                <img
+                  src="{{photo4.FileAddress }}"
+                  class="d-block" alt="...">
+                  </a>
+              </div>
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+       
+      <div class="row">
+        <div class="col-md-6">
+          <div class="dash">
+            <h5>Announcerments</h5>
+            <hr>
+            <ul>
+              <li>Final evaminastion</li>
+              <li>gofb</li>
+            </ul>
+          </div>
+
+
+
+        </div>
+
+        <div class="col-lg-6">
+
+          <div class="dash">
+            <h5>Events</h5>
+            <hr>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <footer>
+      <h5>Contact Details</h5>
+      <p><span>Principal:</span>987654321, <span>HOD:</span>987654321, <span>Tutor:</span>987654321</p>
+    </footer>
+  </div>
 
 
 </div>

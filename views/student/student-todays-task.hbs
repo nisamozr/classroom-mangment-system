@@ -39,78 +39,119 @@
 
     <div class="main">
         <div class="container  ">
+          
+          
             <div class="row ">
-                <div class="col-md-12 col-lg-4">
+                  {{#each note.Notes}}
+                <div class="col-md-12 col-lg-4 mb-4">
                     <div class="card text-center">
                         <div class="card-header">
-                            Featured
+                            Notes(video)
+                           
                         </div>
                         <div class="card-body">
+                      
+                            <a href="/{{this.VideoAddress}}" onclick="changeQuantity('{{this._id}}')" id="video">
                             <div class="embed-responsive embed-responsive-1by1">
                                 {{!-- <iframe class="embed-responsive-item" src="/OptionPrintkeam"></iframe> --}}
-                                <object data="/" type="application/pdf">
-                                    <iframe src="/"></iframe>
-                                </object>
+                               <video  src="/{{this.VideoAddress}}" controls></video>
                             </div>
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            </a>
+                            <h5 class="card-title"> {{this.Topic}}</h5>
+                           <p>Wach video for Attendance</p>
+                           
                         </div>
                         <div class="card-footer text-muted">
-                            2 days ago
+                            {{this.PostAt}}
                         </div>
                     </div>
 
 
                 </div>
 
-                <div class="col-md-12 col-lg-4">
+                <div class="col-md-12 col-lg-4 mb-4">
                     <div class="card text-center ">
                         <div class="card-header">
-                            Featured
+                             Notes(PDF)
                         </div>
+                        
                         <div class="card-body">
-                            <img src="/images/background/tutor.png" class="card-img-top " alt="...">
-                            <h5 class="card-title">Seatment</h5>
-                            <p class="card-text">With to additional content.
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        
+                         <div>
+                            <embed src="/{{this.DocumentAddress}}" id="pdfDoc"  width="500" height="375">
+                            </div>
+                            
+                            <h5 class="card-title">{{this.Topic}}</h5>
+                           
+                            <a href="/{{this.DocumentAddress}}" class="btn btn-primary">Opent Document</a>
                         </div>
                         <div class="card-footer text-muted">
-                            2 days ago
+                           {{this.PostAt}}
                         </div>
                     </div>
 
 
                 </div>
-                <div class="col-md-12 col-lg-4">
+                {{#if this.Link}}
+                <div class="col-md-12 col-lg-4 mb-4">
                     <div class="card text-center">
                         <div class="card-header">
-                            Featured
+                              Notes(youtube)
                         </div>
                         <div class="card-body">
+                            
                             <div class="embed-responsive embed-responsive-1by1">
                                 <iframe class="embed-responsive-item"
-                                    src="https://www.youtube.com/embed/zpOULjyy-n8?rel=0"></iframe>
+                                    src="{{this.Link}}"></iframe>
                             </div>
-                            <h5 class="card-title">Seatment</h5>
-                            <p class="card-text">With to additional content.
-                            </p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            
+                            <h5 class="card-title">{{this.Topic}}</h5>
+                           
+                            
+                            <a href="{{this.Link}}" class="btn btn-primary">Open Link</a>
                         </div>
                         <div class="card-footer text-muted">
-                            2 days ago
+                            {{this.PostAt}}
                         </div>
                     </div>
 
 
                 </div>
+                {{/if}}
+                {{/each}}
+                 {{#each Assig.Assignment}}
+                 <div class="col-md-12 col-lg-4 mb-4">
+                    <div class="card text-center ">
+                        <div class="card-header">
+                            Assignment
+                        </div>
+                        <div class="card-body">
+                         
+                            <embed src="/{{this.FileAddress}}" id="pdfDoc"  width="500" height="375">
+                            <h5 class="card-title">{{this.Topic}}</h5>
+                            
+                            <a href="/{{this.FileAddress}}" class="btn btn-primary">Go Document</a>
+                        </div>
+                        <div class="card-footer text-muted">
+                           {{this.PostAt}}
+                        </div>
+                    </div>
+             
+            </div>
+               {{/each}}
+
+
+                
 
 
 
 
             </div>
+            <hr>
+            <div class="row">
+
+               
+            
 
 
 
@@ -121,3 +162,27 @@
 
 </div>
 </div>
+<script>
+   function changeQuantity(Id) {
+
+        $.ajax({
+            url: '/student/notes-attendense',
+            data: {
+                video:Id             
+            },
+            method: 'get',
+           
+            success: (response) => {
+               
+                    alert("product removed from cart")
+                    onload()
+                   
+                
+            }
+
+        })
+
+    }
+
+ 
+</script>

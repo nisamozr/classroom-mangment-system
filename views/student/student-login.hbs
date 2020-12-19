@@ -23,6 +23,11 @@
     Concurrent verifications to the same number are not allowed!
   </div>
   {{/if}}
+   {{#if Err}}
+  <div class="alert alert-danger text-center  " role="alert">
+    OTP not mach!
+  </div>
+  {{/if}}
 
   <div class=" login ">
     <h1 class="mb-5">Student Login</h1>

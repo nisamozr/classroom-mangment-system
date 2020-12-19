@@ -64,13 +64,13 @@
 
                         <div class="mb-3">
                             <label for="formFileMultiple" class="form-label"> Document </label>
-                            <input class="form-control" name="Document" type="file" id="formFileMultiple" required
-                                multiple>
+                            <input class="form-control" name="Document" type="file" id="filePdf"
+                                onchange="return fileValidation()" required multiple>
                         </div>
                         <div class="mb-3">
 
                             <label for="formFileMultiple" class="form-label"> Video File </label>
-                            <input class="form-control" name="VideoFile" id="Document" type="file" onchange="video()"  multiple>
+                            <input class="form-control" name="VideoFile" id="videofile" type="file" onchange=" return videoValidation()" required multiple>
                         </div>
                         <div class=" text-center">
 
@@ -79,8 +79,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Youtub link</label>
-                            <input type="url" class="form-control" name="Link" id="Link"
-                                placeholder="link">
+                            <input type="url" class="form-control" name="Link" id="Link" placeholder="link">
                         </div>
 
 
@@ -160,16 +159,24 @@
 
 </div>
 </div>
-<script>
-  let file =document.getElementById("Document")
-  let link = document.getElementById("Link")
-  video(){
-       if(file.files.length > 0){
-      link.disabled = true;
-      
-  }
 
-  }
- 
+<script>
+    function fileValidation() {
+        var fileInput =
+            document.getElementById('filePdf');
+
+        var filePath = fileInput.value;
+
+        // Allowing file type 
+        var allowedExtensions =
+            /(\.doc|\.docx|\.odt|\.pdf|\.tex|\.txt|\.rtf|\.wps|\.wks|\.wpd)$/i;
+
+        if (!allowedExtensions.exec(filePath)) {
+            alert('Invalid file type');
+            fileInput.value = '';
+            return false;
+        }
+    }
+  
 
 </script>

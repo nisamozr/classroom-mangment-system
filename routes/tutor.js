@@ -2,7 +2,15 @@ var express = require('express');
 var router = express.Router();
 var tutorHelper = require('../helpers/tutor-helpers');
 const tutorHelpers = require('../helpers/tutor-helpers');
+const studentHelpers = require('../helpers/student-helpers');
 const { response } = require('express');
+let FilePondPluginImageCrop = require('filepond-plugin-image-crop')
+var Clipper = require('image-clipper');
+var im = require('imagemagick');
+const sharp = require('sharp')
+var multer  = require('multer');
+var upload = multer({ dest: 'public/uploded/' });
+var Canvas = require('canvas');
 
 const verifyLogin = (req, res, next) => {
   if (req.session.logggedIn) {
@@ -17,11 +25,27 @@ const verifyLogin = (req, res, next) => {
 router.get('/', function (req, res, next) {
   res.render('index');
 });
-router.get('/tutor', verifyLogin, (req, res) => {
+router.get('/tutor', verifyLogin,async (req, res) => {
+  let user = req.session.user
+  let photo= await studentHelpers.getPhoto(req.session.user._id)
+  let photo1 = photo[0].Photos
+  let photo2 = photo[1].Photos
+  let photo3 = photo[2].Photos
+  let photo4 = photo[3].Photos
+  res.render('tutor/tutor-home', { tutor: true, user,photo,photo1,photo2,photo3,photo4 });
+  
+})
+router.post('/tutor', verifyLogin, (req, res) => {
   let user = req.session.user
   res.render('tutor/tutor-home', { tutor: true, user });
-  console.log(user)
+ 
 })
+router.get('/toutor-photoAlbum', verifyLogin,async function (req, res, next) {
+  let photo= await studentHelpers.getPhoto(req.session.user._id)
+
+  res.render('tutor/tuotr-album', { students: true, student: req.session.student,photo });
+});
+
 
 router.get('/tutor-login', function (req, res, next) {
   if (req.session.user) {
@@ -41,7 +65,7 @@ router.post('/tutor-login', function (req, res, next) {
     if (response.Status) {
       req.session.user = response.user
       req.session.logggedIn = true
-      res.render('tutor/tutor-home', { response, tutor: true, user: req.session.user });
+      res.redirect('/tutor');
 
     }
     else if (response.Password == false) {
@@ -56,7 +80,7 @@ router.post('/tutor-login', function (req, res, next) {
   })
 });
 router.get('/tutor-logout', (req, res) => {
-  req.session.user = null
+  req.session.destroy()
   res.redirect('/tutor-login')
 })
 router.get('/tutor', verifyLogin, (req, res) => {
@@ -77,12 +101,32 @@ router.get('/tutor-students', verifyLogin, async (req, res) => {
   res.render('tutor/tutor-students', { tutor: true, studentslist, user: req.session.user });
   console.log(studentslist)
 })
-router.get('/tutor-attendance', verifyLogin, (req, res) => {
+router.get('/tutor-attendance', verifyLogin, async(req, res) => {
+  
+
   res.render('tutor/tutor-attendance', { tutor: true, user: req.session.user });
+})
+router.post('/tutor-attendance', verifyLogin,async (req, res) => {
+  let date = new Date(req.body.date).toLocaleString().split(',')[0]
+  let attendance = await tutorHelper.getAttendance(date)
+   let aa = attendance[0]
+  // res.json(attendance)
+  res.render('tutor/tutor-attendance', { tutor: true, user: req.session.user,attendance});
+  
+  // console.log(aa)
+  
+  
+
+
+  
 })
 router.get('/tutor-assignment', verifyLogin, async (req, res) => {
   let assignment = await tutorHelper.getTutorInfo(req.session.user._id)
-  res.render('tutor/tutor-assignment', { tutor: true, user: req.session.user, assignment });
+  let ass = await tutorHelper.GetAssinment(req.session.user._id)
+  console.log(ass)
+
+ 
+  res.render('tutor/tutor-assignment', { tutor: true, user: req.session.user, assignment ,ass});
 })
 router.get('/tutor-notes', verifyLogin, async (req, res) => {
   let nots = await tutorHelper.getTutorInfo(req.session.user._id)
@@ -97,6 +141,51 @@ router.get('/tutor-events', verifyLogin, (req, res) => {
 router.get('/tutor-photos', verifyLogin, (req, res) => {
 
   res.render('tutor/tutor-photos', { tutor: true, user: req.session.user });
+})
+router.post('/tutor-photos', verifyLogin, (req, res) => {
+  console.log(req.body.xcrop)
+  console.log(req.body.ycrop)
+  let x =req.body.xcrop
+  let y =req.body.ycrop
+  let width =req.body.widthcrop
+  let hieght =req.body.hightcrop
+ 
+  var fileAddressa = "./public/uploded/photos/" +req.files.Photos.name
+  var tosave = "./public/fgf.jpeg"
+  let photoFile = req.files.Photos
+  Clipper.configure({
+    canvas: require('canvas')
+});
+//    Clipper(photoFile, function() {
+//     this.crop(x, y, width, hieght)
+//     .resize(50, 50)
+//     .quality(80)
+//     .toFile("./public/uploded/backgrssound.jpeg", function() {
+//        console.log('saved!');
+//    });
+// })
+sharp('/uploded/photos/18:11:48 GMT+0530 (India Standard Time)WhatsApp Image 2020-10-03 at 10.01.11 AM (3).jpeg')
+    .extract({ left: 11, top: 0, width: 440, height: 100 })
+    .toFile('/uploded/photos/18:11:48 GMT+0530 (India Standard Time)WhatsApp Image 2020-10-03 at 10.01.11 AM (3).jpeg', function (err) {
+        if (err) console.log(err);
+    })
+
+
+
+
+  var fileAddress = "uploded/photos/" + new Date() + req.files.Photos.name
+  let photoName = req.files.Photos.name
+  photoFile.mv("./public/" + fileAddress, (err, done) => {
+    if (!err) {
+      tutorHelper.postPhoto(req.session.user._id, req.body, fileAddress, photoName).then(() => {
+          res.redirect("/tutor-photos")
+      })
+    }
+    else {
+      console.log(err)
+    }
+  })
+
 })
 router.get('/tutor-profile-edit', verifyLogin, (req, res) => {
 
@@ -159,7 +248,9 @@ router.post('/tutor-addStudent', verifyLogin, (req, res) => {
 
 router.get('/tutor-studentDetails:id', verifyLogin, async (req, res) => {
   let studentId = await tutorHelper.getOneStudents(req.params.id)
-  res.render('tutor/tutor-studentDetails', { tutor: true, user: req.session.user, studentId });
+  let attendance= await studentHelpers.getAttendance(req.params.id)
+  
+  res.render('tutor/tutor-studentDetails', { tutor: true, user: req.session.user, studentId,attendance });
 })
 
 // edit student profile

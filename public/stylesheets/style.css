@@ -137,25 +137,25 @@ body, html {
 .main{
   padding: 20px 10px;
   width: 100%;
-  height: 100vh;
+  min-height: 600px;
  
   margin-left: 300px;
 }
 /* aside end */
 /* main page  */
 .main{
-  height: 100vh;
+  min-height: 600px;
   background-color: #f4f4f6;
 }
 .carousel-inner{
   width: 100%;
-  height: 300px;
+  height: 400px;
  
 
 }
 .carousel-item img{
   width: 100%;
-  height: 100%;
+  height: 400px;
  
 }
 .dash{
@@ -238,3 +238,73 @@ footer span{
 .btt{
   text-align: center;
 }
+.my-custom-scrollbar {
+  position: relative;
+  height: 200px;
+  overflow: auto;
+  }
+  .table-wrapper-scroll-y {
+  display: block;
+  }
+  video {
+    width: 270px;
+    height: 190px;
+   
+  }
+  iframe{
+    width: 270px;
+    height: 190px;
+    
+
+  }
+  #pdfDoc{
+    width: 270px;
+    height: 190px;
+
+  }
+
+.page {
+	margin: 1em auto;
+	max-width: 768px;
+	display: flex;
+	align-items: flex-start;
+	flex-wrap: wrap;
+	height: 100%;
+}
+
+.box {
+	padding: 0.5em;
+	width: 100%;
+	margin:0.5em;
+}
+
+.box-2 {
+	padding: 0.5em;
+	width: calc(100%/2 - 1em);
+}
+
+.options label,
+.options input{
+	width:4em;
+	padding:0.5em 1em;
+}
+
+
+
+.hide {
+	display: none;
+}
+.ss{
+  padding: 30px 1000px;
+}
+.image_container{
+  max-width: 100%;
+  max-height: 300px;
+
+}
+#cropped_result img{
+  max-width: 100%;
+  max-height: 300px;
+
+}
+

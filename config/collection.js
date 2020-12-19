@@ -1,6 +1,6 @@
 module.exports={
     Tutor_collection:'tutor',
     Students_collection:'students',
-    Assignment_collection:'Assignment'
+    Attendance_collection:'Attendance'
    
 }

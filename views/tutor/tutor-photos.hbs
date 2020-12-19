@@ -49,28 +49,48 @@
                     <h3 class="text-center">Photos</h3>
                 </div>
                 <div class="row w-50  ">
-                    
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Topics</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Enter you Topics">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="formFileMultiple" class="form-label"> files </label>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple>
+                    <div class="box-2">
+                        <div class="result"></div>
                     </div>
 
 
 
-                    
-    <button type="button" class="btn btn-primary">save</button>
+                    <form action="/tutor-photos" method="POST" enctype="multipart/form-data">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Topics</label>
+                            <input type="text" class="form-control" name="Topic" id="exampleFormControlInput1"
+                                placeholder="Enter you Topics" required>
+                        </div>
+                        {{!-- onchange="return photoValidation()"  id="photoFile"  --}}
+                        <div class="mb-3">
+                            <label for="filePdf" class="form-label"> files </label>
+                            <input class="form-control" type="file" name="Photos" class="photoFile" id="image"
+                                onchange="readURL(this);" required>
+                                <input type="hidden" name="name" id="tt">
+                        </div>
+                        <input id="cropped_image" type="text"  name="xcrop" hidden/>
+                        <input id="cropped_image1" type="text"  name="ycrop" hidden />
+                        <input id="cropped_image2" type="text" name="widthcrop" hidden/>
+                        <input id="cropped_image3" type="text" name="hightcrop"  hidden/>
+                        
+                    <div class="image_container">
+                        <img id="blah" src="#" alt="your image" />
+                    </div>
+                    {{!-- <div id="cropped_result"></div>
+                    <button id="crop_button">Crop</button> --}}
+               
+                        <button type="submit" id="svImg" class="btn btn-primary">Post</button>
+
+
                 </div>
-                
+                </form>
+               
+
+
 
             </div>
-           
-            
+
+
 
         </div>
     </div>
@@ -80,3 +100,77 @@
 
 </div>
 </div>
+<script type="text/javascript" >
+let cropper
+let imaage = document.getElementById('')
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah').attr('src', e.target.result)
+            };
+            reader.readAsDataURL(input.files[0]);
+            setTimeout(initCropper, 1000);
+        }
+    }
+    function initCropper() {
+        var image = document.getElementById('blah');
+        var cropper = new Cropper(image, {
+            aspectRatio: 2 / 1,
+            crop: function (e) {
+                console.log(e.detail.x);
+                console.log(e.detail.y);
+                console.log(e.detail.width);
+                console.log(e.detail.height);
+                $("#cropped_image").val(e.detail.x);
+                $("#cropped_image1").val(e.detail.y);
+                $("#cropped_image2").val(e.detail.width);
+                $("#cropped_image3").val(e.detail.height);
+
+            }
+           
+            
+        });
+        
+       
+
+        // On crop button clicked
+     /* let go =  document.getElementById('crop_button').addEventListener('click', function () {
+            var imgurl = cropper.getCroppedCanvas().toDataURL();
+            var img = document.createElement("img");
+            img.src = imgurl;
+            document.getElementById("cropped_result").appendChild(img);
+            $("#cropped_image").val(cropper.getCroppedCanvas().toDataURL());
+
+            
+           
+            
+
+            /*---------------- SEND IMAGE TO THE SERVER-------------------------
+
+                cropper.getCroppedCanvas().toBlob(function (blob) {
+                      var formData = new FormData();
+                      formData.append('croppedImage', blob);
+                      // Use `jQuery.ajax` method
+                      $.ajax('/path/to/upload', {
+                        method: "POST",
+                        data: formData,
+                        processData: false,
+                        contentType: false,
+                        success: function () {
+                          console.log('Upload success');
+                        },
+                        error: function () {
+                          console.log('Upload error');
+                        }
+                      });
+                });
+            ----------------------------------------------------
+
+           console.log()
+        })*/
+       
+       
+    }
+  
+</script>
