@@ -1,52 +1,16 @@
+<div class="d-flex" id="wrapper">
 
+    <!-- Sidebar -->
+    {{#if user}}
+    {{>tutor-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
 
-<div class="side d-flex flex-row bd-highlight">
-    <aside class="sidenav">
-        <ul>
-            <li>
-                <a href="/tutor">Home</a>
+    <!-- Page Content -->
 
-            </li>
-            <li>
-                <a href="/tutor-Profile">Profile</a>
+    <div class="container-fluid">
 
-            </li>
-            <li>
-                <a href="/tutor-students">Students</a>
-            </li>
-            <li>
-                <a href="/tutor-attendance">Attendance</a>
-
-            </li>
-            <li>
-                <a href="/tutor-assignment">assignment</a>
-
-            </li>
-            <li>
-                <a href="/tutor-notes">Notes</a>
-
-            </li>
-            <li>
-                <a href="/tutor-announcement">Announcement</a>
-            </li>
-            <li>
-                <a href="/tutor-events">Events</a>
-
-            </li>
-            <li>
-                <a href="/tutor-photos">Photos</a>
-
-            </li>
-        </ul>
-
-
-
-
-    </aside>
-
-    <div class="main">
-        <div class="container ">
-            <div class="row atttendance">
+        <div class="row atttendance">
                 <div class="col-md-12 m-2 ">
                     <h3>Attendance</h3>
                 </div>
@@ -97,15 +61,17 @@
                 </div>
             </div>
 
-
-        </div>
-    </div>
-
-
-
+        
+     
+    <!-- /#page-content-wrapper -->
 
 </div>
 </div>
+<!-- /#wrapper -->
+
+
+
+
 {{!-- <script>
 
     $('input[type="date"]').change(function () {

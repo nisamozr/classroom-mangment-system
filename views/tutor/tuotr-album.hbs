@@ -1,56 +1,24 @@
-<div class="side d-flex flex-row bd-highlight">
-  <aside class="sidenav">
-    <ul>
-      <li>
-        <a href="/tutor">Home</a>
-
-      </li>
-      <li>
-        <a href="/tutor-Profile">Profile</a>
-
-      </li>
-      <li>
-        <a href="/tutor-students">Students</a>
-      </li>
-      <li>
-        <a href="/tutor-attendance">Attendance</a>
-
-      </li>
-      <li>
-        <a href="/tutor-assignment">assignment</a>
-
-      </li>
-      <li>
-        <a href="/tutor-notes">Notes</a>
-
-      </li>
-      <li>
-        <a href="/tutor-announcement">Announcement</a>
-      </li>
-      <li>
-        <a href="/tutor-events">Events</a>
-
-      </li>
-      <li>
-        <a href="/tutor-photos">Photos</a>
-
-      </li>
-    </ul>
 
 
+<div class="d-flex" id="wrapper">
 
+    <!-- Sidebar -->
+    {{#if user}}
+    {{>tutor-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
 
-  </aside>
+    <!-- Page Content -->
 
-  <div class="main">
-    <div class="container">
-            <div class="row">
+    <div class="container-fluid">
+       <div class="row">
                 {{#each photo}}
                 <div class="col-md-4 pb-4">
                     <div class="card" style="width: 18rem;">
                         <a href="/{{this.Photos.FileAddress}}">
+                            
                             <img src="/{{this.Photos.FileAddress}}" class="card-img-top  " style="height: 200px;"
-                                alt="..."></a>
+                                alt="gfdbgfb"></a>
                         <div class="card-body">
                             <h5 class="card-title">{{this.Photos.Topic}}</h5>
 
@@ -62,8 +30,12 @@
 
 
             </div>
-        </div>
 
+        
+     
+    <!-- /#page-content-wrapper -->
 
 </div>
 </div>
+<!-- /#wrapper -->
+

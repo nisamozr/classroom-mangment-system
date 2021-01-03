@@ -1,66 +1,33 @@
-<div class="side d-flex flex-row bd-highlight">
-    <aside class="sidenav">
-        <ul>
-            <li>
-                <a href="/tutor">Home</a>
 
-            </li>
-            <li>
-                <a href="/tutor-Profile">Profile</a>
+<div class="d-flex" id="wrapper">
 
-            </li>
-            <li>
-                <a href="/tutor-students">Students</a>
-            </li>
-            <li>
-                <a href="/tutor-attendance">Attendance</a>
+    <!-- Sidebar -->
+    {{#if user}}
+    {{>tutor-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
 
-            </li>
-            <li>
-                <a href="/tutor-assignment">assignment</a>
+    <!-- Page Content -->
 
-            </li>
-            <li>
-                <a href="/tutor-notes">Notes</a>
+    <div class="container-fluid">
 
-            </li>
-            <li>
-                <a href="/tutor-announcement">Announcement</a>
-            </li>
-            <li>
-                <a href="/tutor-events">Events</a>
-
-            </li>
-            <li>
-                <a href="/tutor-photos">Photos</a>
-
-            </li>
-        </ul>
-
-
-
-
-    </aside>
-
-    <div class="main">
-        <div class="container  ">
-            <div class="row topic">
+          <div class="row topic">
                 <div class="col-md-12 m-2 ">
                     <h3 class="text-center">Assignment</h3>
                 </div>
                 <div class="row w-50  ">
-                    <form action="/tutor-assignment" method="post" enctype="multipart/form-data">
+                    <form action="/tutor-assignment" id="asss" method="post" enctype="multipart/form-data">
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Topics</label>
-                            <input type="text" class="form-control" name="Topic" id="exampleFormControlInput1"
+                            <input type="text" class="form-control" name="Topic" id="topic"
                                 placeholder="Enter you Topics" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="filePdf" class="form-label"> files </label>
-                            <input class="form-control" type="file" name="AssignmentFile"  required>
+                            <input class="form-control" type="file" name="AssignmentFile" required>
                         </div>
-                        <button type="submit" class="btn btn-primary">Post</button>
+                        <button type="submit" onclick="sendnotfication()" class="btn btn-primary">Post</button>
 
                 </div>
                 </form>
@@ -68,7 +35,7 @@
 
             </div>
             <div class="row mt-5">
-                <div class="col-md-12">
+                <div class="col-md-12 table-wrapper-scroll-y my-custom-scrollbar">
                     <table class="table table-striped text-center">
                         <thead>
                             <tr>
@@ -109,14 +76,14 @@
             </div>
 
 
-
-        </div>
-    </div>
-
-
-
+        
+     
+    <!-- /#page-content-wrapper -->
 
 </div>
 </div>
+<!-- /#wrapper -->
 
-   
+
+
+

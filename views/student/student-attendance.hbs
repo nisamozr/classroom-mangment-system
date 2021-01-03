@@ -1,131 +1,97 @@
-<div class="side d-flex flex-row bd-highlight">
-     <aside class="sidenav">
-    <ul>
-      <li>
-        <a href="/student">Home</a>
-
-      </li>
-      <li>
-        <a href="/student/Profile">Profile</a>
-
-      </li>
-          <li>
-        <a href="/student/todays-task">Today's Task</a>
-
-      </li>
-    
-      <li>
-        <a href="/student/attendance">Attendance</a>
-
-      </li>
-      <li>
-        <a href="/student/assignment">Assignment</a>
-
-      </li>
-      <li>
-        <a href="/student/notes">Notes</a>
-
-      </li>
-      <li>
-        <a href="/student/announcement">Announcement</a>
-      </li>
-
-    </ul>
 
 
 
+<div class="d-flex" id="wrapper">
 
-  </aside>
+  <!-- Sidebar -->
+  {{#if students}}
+  {{>student-sidenav}}
+  {{/if}}
+  <!-- /#sidebar-wrapper -->
 
+  <!-- Page Content -->
 
-    <div class="main">
-        <div class="container ">
-            <div class="row atttendance">
-                <div class="col-md-12 m-2 ">
-                    <h3>Attendance</h3>
-                </div>
-                <div class="col-md-12 d-flex justify-content-center ">
-                    {{!-- <div class="form-group row  ">
+  <div class="container-fluid">
+     <div class="row atttendance">
+        <div class="col-lg-12 m-2 ">
+          <h3>Attendance</h3>
+        </div>
+        {{!-- <div class="col-md-12 d-flex justify-content-center ">
+                   <div class="form-group row  ">
                         <label for="example-date-input" class="col-2 col-form-label ">Date</label>
                         <div class="col-10 ">
                             <input class="form-control " type="date" value="2011-08-19" id="example-date-input">
                         </div>
-                    </div> --}}
+                    </div> 
 
-                </div>
-            </div>
-             <div class="row mt-5" > 
-                <div class="col-md-12 " >
-                  <div style="margin: 0 400px; font-size: large;" >
-                    <table >
-                        <tr>
-                            <th>Total Days</th>
-                            <th>:</th>
-                            <td>{{totalcound.AttendanceCound}}</td>
-                        </tr>
-                        <tr>
-                            <th>Present</th>
-                            <th>:</th>
-                            <td>{{totalpresentcound.Presend}}</td>
+                </div> --}}
+      </div>
+      <div class="row mt-5">
+        <div class="col-lg-12 ">
+          <div>
+            <table class="center">
+              <tr>
+                <th>Total Days</th>
+                <th>:</th>
+                <td>{{totalcound.AttendanceCound}}</td>
+              </tr>
+              <tr>
+                <th>Present</th>
+                <th>:</th>
+                <td>{{totalpresentcound.Presend}}</td>
 
-                        </tr>
-                        <tr>
-                            <th>Absent</th>
-                            <th>:</th>
-                            <td>{{totalabsentcound.Absend}}</td>
+              </tr>
+              <tr>
+                <th>Absent</th>
+                <th>:</th>
+                <td>{{totalabsentcound.Absend}}</td>
 
-                        </tr>
-                        <tr>
-                            <th>Percentage</th>
-                            <th>:</th>
-                            <td>{{persentageround}}%
-                            </td>
-                        </tr>
-                        {{!-- <tr>
+              </tr>
+              <tr>
+                <th>Percentage</th>
+                <th>:</th>
+                <td>{{persentageround}}%
+                </td>
+              </tr>
+              {{!-- <tr>
                             <th>Class Avarage</th>
                             <th>:</th>
                             <td>78%
                             </td>
                         </tr> --}}
 
-                    </table>
-                  </div>
-                </div>
-            </div>
-             <div class="row mt-5">
-                <div class="col-md-12">
-                    <div class="table-wrapper-scroll-y my-custom-scrollbar">
-
-  <table class="table table-bordered table-striped mb-0 text-center">
-    <thead>
-      <tr>
-       
-        <th scope="col">Date</th>
-        <th scope="col">Attendance</th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each attendance}}
-      <tr>
-     
-        <td>{{this.Attendance.Date}}</td>
-        <td>{{this.Attendance.Attendance}}</td>
-      </tr>
-      {{/each}}
-    </tbody>
-  </table>
-
-</div>
-                </div>
-            </div>
-
-
-
+            </table>
+          </div>
         </div>
-    </div>
+      </div>
+      <div class="row mt-5">
+        <div class="col-md-12">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar">
 
+            <table class="table table-bordered table-striped mb-0 text-center">
+              <thead>
+                <tr>
 
+                  <th scope="col">Date</th>
+                  <th scope="col">Attendance</th>
+                </tr>
+              </thead>
+              <tbody>
+                {{#each attendance}}
+                <tr>
 
+                  <td>{{this.Attendance.Date}}</td>
+                  <td>{{this.Attendance.Attendance}}</td>
+                </tr>
+                {{/each}}
+              </tbody>
+            </table>
 
+          </div>
+        </div>
+      </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
 </div>
-</div>
+<!-- /#wrapper -->

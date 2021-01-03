@@ -1,51 +1,24 @@
-<div class="side d-flex flex-row bd-highlight">
-  <aside class="sidenav">
-    <ul>
-      <li>
-        <a href="/student/home">Home</a>
-
-      </li>
-      <li>
-        <a href="/student/Profile">Profile</a>
-
-      </li>
-          <li>
-        <a href="/student/todays-task">Today's Task</a>
-
-      </li>
-    
-      <li>
-        <a href="/student/attendance">Attendance</a>
-
-      </li>
-      <li>
-        <a href="/student/assignment">Assignment</a>
-
-      </li>
-      <li>
-        <a href="/student/notes">Notes</a>
-
-      </li>
-      <li>
-        <a href="/student/announcement">Announcement</a>
-      </li>
-
-    </ul>
 
 
 
 
-  </aside>
+<div class="d-flex" id="wrapper">
 
+    <!-- Sidebar -->
+    {{#if students}}
+    {{>student-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
 
-    <div class="main">
-        <div class="container  ">
-            <div class="row topic">
+    <!-- Page Content -->
+
+    <div class="container-fluid">
+         <div class="row topic">
                 <div class="col-md-12 m-2 ">
                     <h3 class="text-center">Photos</h3>
                 </div>
                 <div class="row w-50  ">
-                    
+
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Topics</label>
                         <input type="text" class="form-control" id="exampleFormControlInput1"
@@ -59,20 +32,13 @@
 
 
 
-                    
-    <button type="button" class="btn btn-primary">save</button>
+
+                    <button type="button" class="btn btn-primary">save</button>
                 </div>
-                
 
-            </div>
-           
-            
 
-        </div>
+            </div><!-- /#page-content-wrapper -->
+
     </div>
-
-
-
-
 </div>
-</div>
+<!-- /#wrapper -->

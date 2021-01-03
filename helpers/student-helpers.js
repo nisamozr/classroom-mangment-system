@@ -3,6 +3,12 @@ var db = require('../config/connection')
 var collection = require('../config/collection')
 const { use } = require('../routes/tutor')
 const { response } = require('express')
+const Paytm = require('paytm-pg-node-sdk');
+const Razorpay=require('razorpay')
+var instance = new Razorpay({
+    key_id: 'rzp_test_alVcwZO2KVYyEf',
+    key_secret: 'u2i29cemIcehKB6YRENwrXyb',
+  });
 var objectId = require('mongodb').ObjectID
 module.exports = {
 
@@ -193,7 +199,7 @@ module.exports = {
         let response = {}
         return new Promise(async (resolve, reject) => {
             let topic = await db.get().collection(collection.Students_collection).findOne({_id:objectId(studentId),$and:[{ Attendance: { $elemMatch: { Date: new Date(Date.now()).toLocaleString().split(',')[0] } } },{ Attendance: { $elemMatch: { Attendance: "Absent" } } }]})
-            console.log(topic)
+           
             if (topic) {
                 
                 db.get().collection(collection.Students_collection).updateOne({_id:objectId(studentId),Attendance: {$elemMatch:{ Date:new Date(Date.now()).toLocaleString().split(',')[0]}}},
@@ -412,7 +418,110 @@ module.exports = {
             ).toArray()
             resolve(att)
         })
-    }
+    },
+    getEachAnnouncement:(announceId)=>{
+        return new Promise(async(resolve,reject)=>{
+           let aa = await db.get().collection(collection.Announcement_collection).findOne({_id:objectId(announceId)})
+          
+          resolve(aa)
+           
+        })
+      
+    },
+    getEachEvent:(announceId)=>{
+        return new Promise(async(resolve,reject)=>{
+           
+           let aa = await db.get().collection(collection.Event_collection).findOne({_id:objectId(announceId)})
+          
+          resolve(aa)
+           
+        })
+      
+    },
+    bookEvent:(book,userId)=>{
+        return new Promise((resolve,reject)=>{
+            let booknow={
+                StudentId:objectId(userId),
+                price:book.eventPrice,
+                eventId:book.eventId,
+                eventName:book.EventName,
+                paymentmethod:book.paymentmethod,
+                Date: new Date(Date.now()).toLocaleString().split(',')[0],
+                
+            }
+            db.get().collection(collection.BookedEvent_collection).insertOne(booknow).then((response)=>{
+                resolve(response)
+            })
+          
+          
+           
+        })
+      
+    },
+    generatRazorPay:(amount)=>{
+        return new Promise((resolve,reject)=>{
+           
+            var options = {
+                amount: amount*100,  // amount in the smallest currency unit
+                currency: "INR",
+                receipt: ""+new objectId()
+              };
+              instance.orders.create(options, function(err, order) {
+                  if(err){
+                      console.log(err)
+                  }else{
+              
+                resolve(order)
+                  }
+              })
+        })
+
+
+    },
+    verifyPayment:(details)=>{
+        return new Promise((resolve,reject)=>{
+            const crypto = require('crypto');
+            let hmac = crypto.createHmac('sha256', 'SeajYNgUZuu193R4knI5vBQR');
+
+            hmac.update(details['payment[razorpay_order_id]']+'|'+details['payment[razorpay_payment_id]']);
+            hmac=hmac.digest('hex')
+            if(hmac==details['payment[razorpay_signature]']){
+                resolve()
+                
+            }
+            else{
+                reject()
+            }
+        })
+    },
+    // generatpaytm:(amount)=>{
+    //     return new Promise((resolve,reject)=>{
+    //         var environment = Paytm.LibraryConstants.STAGING_ENVIRONMENT;
+
+    //         // For Production 
+    //         // var environment = Paytm.LibraryConstants.PRODUCTION_ENVIRONMENT;
+            
+    //         // Find your mid, key, website in your Paytm Dashboard at https://dashboard.paytm.com/next/apikeys 
+    //         var mid = "AKlFNW11785226604992";
+    //         var key = "0v5nBBkT#kXOJoLt";
+    //         var website = "WEBSTAGING";
+    //         var client_id = "WEB";
+            
+    //         var callbackUrl = "https://securegw-stage.paytm.in/order/status";
+    //         Paytm.MerchantProperties.setCallbackUrl(callbackUrl);
+            
+    //         Paytm.MerchantProperties.initialize(environment, mid, key, client_id, website);
+    //         // If you want to add log file to your project, use below code
+    //         Paytm.Config.logName = "[PAYTM]";
+    //         Paytm.Config.logLevel = Paytm.LoggingUtil.LogLevel.INFO;
+    //         Paytm.Config.logfile = "/path/log/file.log";
+            
+              
+          
+    //     })
+
+
+    // },
    
 
 

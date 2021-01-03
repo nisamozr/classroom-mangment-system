@@ -1,0 +1,82 @@
+
+
+
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    {{#if students}}
+    {{>student-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+
+    <div class="container-fluid">
+     <!-- /#page-content-wrapper -->
+
+        <div class="row">
+                <div class="col-md-12 cc ">
+                    <div class="chatbg" style="width: 450px; height: 550px;">
+                        <div class=" " style="width: 450px; height: 500px;">
+                            <div style="height: 40px; width: 100%; background: #B4CFEC;" class="text-center">{{student.Name}}</div>
+                            <div id="mario-chat" class="table-wrapper-scroll-y my-custom-scrollbar"
+                                style="height: 450px;">
+                                <div id="output">
+
+                                </div>
+                                <div id="feedback"></div>
+
+                            </div>
+
+                        </div>
+                        <div style="height: 40px; width: 100%;" class="d-inline ">
+                            <input type="text" name="" value="{{student.Name}}" id="user" hidden>
+                            <input type="email" class="control " id="message" placeholder="Message"
+                                style="width: 80%;">
+                            <button type="submit" class="btn btn-primary mb-2 " id="send">send</button>
+
+                           
+
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+    </div>
+</div>
+    <!-- /#wrapper -->
+
+<script>
+
+    var socket = io()
+    var message = document.getElementById('message')
+    var user = document.getElementById('user')
+    var btn = document.getElementById('send')
+    var output = document.getElementById('output')
+    var feeedback = document.getElementById('feedback')
+    btn.addEventListener("click", function () {
+        socket.emit('chat', { message: message.value, user: user.value })
+
+          document.getElementById('message').value=""
+     
+
+
+    })
+    message.addEventListener("keypress", function () {
+        socket.emit('typing', user.value)
+    })
+    socket.on("chat", function (data) {
+        feeedback.innerHTML = ""
+        output.innerHTML += '<p><strong>' + data.user + ':</strong>' + data.message + '</p>'
+    })
+    socket.on("typing", function (data) {
+        feeedback.innerHTML = "<p><em>" + data + 'is typing a message ...</em></p>'
+    })
+
+
+
+
+
+</script>

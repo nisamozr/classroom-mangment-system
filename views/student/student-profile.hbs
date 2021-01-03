@@ -1,47 +1,25 @@
-<div class="side d-flex flex-row bd-highlight">
-  <aside class="sidenav">
-    <ul>
-      <li>
-        <a href="/student">Home</a>
-
-      </li>
-      <li>
-        <a href="/student/Profile">Profile</a>
-
-      </li>
-          <li>
-        <a href="/student/todays-task">Today's Task</a>
-
-      </li>
-    
-      <li>
-        <a href="/student/attendance">Attendance</a>
-
-      </li>
-      <li>
-        <a href="/student/assignment">Assignment</a>
-
-      </li>
-      <li>
-        <a href="/student/notes">Notes</a>
-
-      </li>
-      <li>
-        <a href="/student/announcement">Announcement</a>
-      </li>
-
-    </ul>
 
 
+<div class="d-flex" id="wrapper">
 
+    <!-- Sidebar -->
+    {{#if students}}
+    {{>student-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
 
-  </aside>
+    <!-- Page Content -->
 
-    <div class="main">
-        <div class="container profil">
-            <h3>Profile</h3>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12 text-center mt-5 mb-5">
+                <h3>Profile</h3>
+            </div>
+        </div>
+          
             <div class="row">
-                <div class="col-md-12 col-lg-6 pro-pic">
+                 
+                <div class="col-md-12 col-lg-6 pro-pic mb-3">
                     {{#if tutorprofil.image}}
                   
                     <img src='/uploded/tutor/profile/{{tutorprofil._id}}{{tutorprofil.image.name}}'alt="">   
@@ -88,19 +66,8 @@
 
                 </div>
 
-            </div>
-            <div class="row">
-                    {{!-- <div class="col-lg-12 profil-edit">
-                    
-                        <a href="/tutor-profile-edit" class="btn btn-success">Edit</a>
-                    </div> --}}
-            </div>
-        </div>
+            </div><!-- /#page-content-wrapper -->
+
     </div>
-
-
-
-
-
 </div>
-</div>
+    <!-- /#wrapper -->

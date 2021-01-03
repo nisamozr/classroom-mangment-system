@@ -1,50 +1,15 @@
-<div class="side d-flex flex-row bd-highlight">
-    <aside class="sidenav">
-        <ul>
-            <li>
-                <a href="/tutor">Home</a>
+<div class="d-flex" id="wrapper">
 
-            </li>
-            <li>
-                <a href="/tutor-Profile">Profile</a>
+    <!-- Sidebar -->
+    {{#if user}}
+    {{>tutor-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
 
-            </li>
-            <li>
-                <a href="/tutor-students">Students</a>
-            </li>
-            <li>
-                <a href="/tutor-attendance">Attendance</a>
+    <!-- Page Content -->
 
-            </li>
-            <li>
-                <a href="/tutor-assignment">assignment</a>
-
-            </li>
-            <li>
-                <a href="/tutor-notes">Notes</a>
-
-            </li>
-            <li>
-                <a href="/tutor-announcement">Announcement</a>
-            </li>
-            <li>
-                <a href="/tutor-events">Events</a>
-
-            </li>
-            <li>
-                <a href="/tutor-photos">Photos</a>
-
-            </li>
-        </ul>
-
-
-
-
-    </aside>
-
-    <div class="main">
-        <div class="container  ">
-            <div class="row topic">
+    <div class="container-fluid">
+          <div class="row topic">
                 <div class="col-md-12 m-2 ">
                     <h3 class="text-center">Notes</h3>
                     {{#if err}}
@@ -92,7 +57,7 @@
 
             </div>
             <div class="row mt-5">
-                <div class="col-md-12">
+                <div class="col-md-12 table-wrapper-scroll-y my-custom-scrollbar" style="max-height: 300px;">
                     <table class="table table-striped text-center">
                         <thead>
                             <tr>
@@ -150,33 +115,13 @@
             </div>
 
 
-
-        </div>
-    </div>
-
-
-
+        
+     
+    <!-- /#page-content-wrapper -->
 
 </div>
 </div>
+<!-- /#wrapper -->
 
-<script>
-    function fileValidation() {
-        var fileInput =
-            document.getElementById('filePdf');
 
-        var filePath = fileInput.value;
 
-        // Allowing file type 
-        var allowedExtensions =
-            /(\.doc|\.docx|\.odt|\.pdf|\.tex|\.txt|\.rtf|\.wps|\.wks|\.wpd)$/i;
-
-        if (!allowedExtensions.exec(filePath)) {
-            alert('Invalid file type');
-            fileInput.value = '';
-            return false;
-        }
-    }
-  
-
-</script>

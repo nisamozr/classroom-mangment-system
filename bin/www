@@ -21,6 +21,13 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+// socket.io
+
+var io = app.io;
+io.attach(server);
+
+
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -88,3 +95,5 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+

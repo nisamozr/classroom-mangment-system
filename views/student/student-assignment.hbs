@@ -1,46 +1,18 @@
-<div class="side d-flex flex-row bd-highlight">
-  <aside class="sidenav">
-    <ul>
-      <li>
-        <a href="/student">Home</a>
-
-      </li>
-      <li>
-        <a href="/student/Profile">Profile</a>
-
-      </li>
-      <li>
-        <a href="/student/todays-task">Today's Task</a>
-
-      </li>
-
-      <li>
-        <a href="/student/attendance">Attendance</a>
-
-      </li>
-      <li>
-        <a href="/student/assignment">Assignment</a>
-
-      </li>
-      <li>
-        <a href="/student/notes">Notes</a>
-
-      </li>
-      <li>
-        <a href="/student/announcement">Announcement</a>
-      </li>
-
-    </ul>
 
 
 
+<div class="d-flex" id="wrapper">
 
-  </aside>
+    <!-- Sidebar -->
+    {{#if students}}
+    {{>student-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
 
+    <!-- Page Content -->
 
-  <div class="main">
-    <div class="container  ">
-      <div class="row topic">
+    <div class="container-fluid">
+       <div class="row topic">
         <div class="col-md-12 m-2 ">
           <h3 class="text-center">Assignment</h3>
 
@@ -73,10 +45,11 @@
 
       </div>
       <div class="row mt-5">
-        <div class="col-md-6">
+        <div class="col-lg-6">
           <div class="text-center text-danger">
             Assignment Topics
           </div>
+          <div class="table-wrapper-scroll-y my-custom-scrollbar"  style="height: 300px;">
           <table class="table table-striped text-center">
             <thead>
               <tr>
@@ -103,12 +76,14 @@
 
             </tbody>
           </table>
+          </div>
         </div>
-         <div class="col-md-6">
+         <div class="col-lg-6 col-md-12">
             <div class="text-center text-danger">
             Submitted Assignment 
           </div>
-          <table class="table table-striped text-center">
+          <div class="table-wrapper-scroll-y my-custom-scrollbar"  style="height: 300px;">
+          <table class="table table-striped text-center ">
             <thead>
               <tr>
                 <th scope="col" width=25%>Topic</th>
@@ -147,16 +122,13 @@
 
             </tbody>
           </table>
+          </div>
         </div>
       </div>
 
-
+       
+       <!-- /#page-content-wrapper -->
 
     </div>
-  </div>
-
-
-
-
 </div>
-</div>
+    <!-- /#wrapper -->

@@ -1,78 +1,48 @@
-<div class="side d-flex flex-row bd-highlight">
-    <aside class="sidenav">
-        <ul>
-            <li>
-                <a href="/student">Home</a>
-
-            </li>
-            <li>
-                <a href="/student/Profile">Profile</a>
-
-            </li>
-            <li>
-                <a href="/student/todays-task">Today's Task</a>
-
-            </li>
-
-            <li>
-                <a href="/student/attendance">Attendance</a>
-
-            </li>
-            <li>
-                <a href="/student/assignment">Assignment</a>
-
-            </li>
-            <li>
-                <a href="/student/notes">Notes</a>
-
-            </li>
-            <li>
-                <a href="/student/announcement">Announcement</a>
-            </li>
-
-        </ul>
 
 
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    {{#if students}}
+    {{>student-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+
+    <div class="container-fluid">
+        <div class="row topic">
+            <div class="col-md-12 m-2 ">
+                <h3 class="text-center">Announcement</h3>
+            </div>
+            <div class=" table-wrapper-scroll-y my-custom-scrollbar" style="height: 500px;">
+            <table class="table table-striped text-center">
+                <thead>
+
+                    <tr>
+                        <th scope="col">Date</th>
+                        <th scope="col">Subject</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    {{#each annoncement}}
+                    <tr>
+
+                        <td>{{this.PostDate}}</td>
+                        <td> <a href="/student/eachannouncement{{this._id}}">{{this.Message}}</a></td>
+                    </tr>
+                    {{/each}}
 
 
-    </aside>
-
-
-    <div class="main">
-        <div class="container  ">
-            <div class="row topic">
-                <div class="col-md-12 m-2 ">
-                    <h3 class="text-center">Announcement</h3>
-                </div>
-                <div class="row w-50   ">
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Message</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Enter you Topics">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Description</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
-
-
-
-
-
-                    <button type="button" class="btn btn-primary mt-5">save</button>
-                </div>
-
-
+                </tbody>
+            </table>
             </div>
 
 
 
-        </div>
+        </div ><!-- /#page-content-wrapper -->
+
     </div>
-
-
-
-
 </div>
-</div>
+    <!-- /#wrapper -->

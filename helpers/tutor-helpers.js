@@ -158,7 +158,7 @@ module.exports = {
             )
                 // await db.get().collection(collection.Assignment_collection).insertOne(Assignment)
                 .then((response) => {
-                    console.log(response)
+                 
                     resolve(response)
 
                 })
@@ -257,7 +257,7 @@ module.exports = {
           
         })
     },
-    postPhoto: (tutorId, photoinfo, FileAddress, fileName) => {
+    postPhoto: (tutorId, photoinfo, image,FileAddress) => {
       
         return new Promise(async (resolve, reject) => {
 
@@ -267,7 +267,7 @@ module.exports = {
                         "Photos": {
                             "_id": new objectId(),
                             "Topic": photoinfo.Topic,
-                            "FileName": fileName,
+                            "FileName": image,
                             "FileAddress": FileAddress,
                             "PostAt": dateFormat(new Date(), "dd-mm-yyyy h:MM"),
                               "PostDate": new Date(Date.now()).toLocaleString().split(',')[0],
@@ -277,12 +277,93 @@ module.exports = {
             )
                 // await db.get().collection(collection.Assignment_collection).insertOne(Assignment)
                 .then((response) => {
-                    console.log(response)
+                    
                     resolve(response)
 
                 })
         })
     },
+    addAnnoncement: (userid, userPost, imageName,imageAddress, videoname,VideoAddress,pfdName,pdfAddress) => {
+        let data= {
+            "poatedBy":userid,
+        
+            "Message": userPost.Message,
+            "Description":userPost.Description,
+        
+        "pdfName": pfdName,
+        "pdfAddress": pdfAddress,
+        "VideoName": videoname,
+        "VideoAddress": VideoAddress,
+        "ImageName":imageName,
+        "ImageAddress":imageAddress  ,
+       
+       
+        "PostDate": new Date(Date.now()).toLocaleString().split(',')[0],
+        "PostAt": dateFormat(new Date(), "dd-mm-yyyy h:MM")
+
+
+    }
+        return new Promise(async(resolve, reject) => {
+
+
+            await db.get().collection(collection.Announcement_collection).insertOne(data)
+
+            .then((response) => {
+            console.log(response)
+            resolve(response)
+
+            })
+        
+        
+    })
+},
+getAnnoncement: (tutorId) => {
+    return new Promise(async(resolve, reject) => {
+       let ass= await db.get().collection(collection.Announcement_collection).find().sort({PostDate : -1}).toArray()
+       console.log(ass)
+        resolve(ass)
+    })
+},
+
+addEvent: (userid, userPost, imageName,imageAddress, videoname,VideoAddress,pfdName,pdfAddress) => {
+    let data= {
+            "poatedBy":userid,
+        "EventName": userPost.EventName,
+        "ConductingBy":userPost.ConductingBy,
+        "Topic":userPost.Topic,
+        "EventDate":userPost.EventDate,
+        "pdfName": pfdName,
+        "pdfAddress": pdfAddress,
+        "VideoName": videoname,
+        "VideoAddress": VideoAddress,
+        "ImageName":imageName,
+        "ImageAddress":imageAddress  ,
+        "EventType":userPost.EventType,
+        "Price":userPost.Price,
+        "PostDate": new Date(Date.now()).toLocaleString().split(',')[0],
+        "PostAt": dateFormat(new Date(), "dd-mm-yyyy h:MM")
+
+
+    }
+    return new Promise(async(resolve, reject) => {
+        await db.get().collection(collection.Event_collection).insertOne(data) .then((response) => {
+            console.log(response)
+            resolve(response)
+
+
+       
+        })
+    
+    
+})
+},
+getEvent: (tutorId) => {
+    return new Promise(async(resolve, reject) => {
+       let ass= await db.get().collection(collection.Event_collection).find().sort({PostDate : -1}).toArray()
+       console.log(ass)
+        resolve(ass)
+    })
+},
 
 
 

@@ -1,0 +1,78 @@
+
+
+
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    {{#if students}}
+    {{>student-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+
+    <div class="container-fluid">
+          <div class="row topic">
+                <div class="col-md-12 m-2 ">
+                    <div class="alert alert-secondary  text-center" style="height: 100px;" role="alert">
+                        <div class="row h-100">
+                            <div class="col-md-3">
+                                <h4 class="mt-3">Message</h4>
+                            </div>
+                            <div class="col-md-9">
+
+                                <h5 class="mt-3">{{eachannoncement.Message}}</h5>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-12 m-2 ">
+                    <div class="alert alert-secondary text-center" style="height: 100px;" role="alert">
+                        <div class="row h-100">
+                            <div class="col-md-3">
+                                <h5 class="mt-3">Discription:</h5>
+                            </div>
+                            <div class="col-md-9">
+
+                                <p class="mt-3">{{eachannoncement.Description}}</p>
+                            </div>
+                        </div </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+            </div>
+            <div class="row">
+                {{#if eachannoncement.ImageName}}
+                <div class="col-md-6">
+                    <p>Image</p>
+                    <img src="/{{eachannoncement.ImageAddress}}" style="width: 100%;" alt="">
+                </div>
+                {{/if}}
+                {{#if eachannoncement.VideoName}}
+                  <div class="col-md-6">
+                    <p>Video</p>
+                    <video controls src="/{{eachannoncement.VideoAddress}}" style="width: 100%; height: 90%;"></video>
+                </div>
+               
+                 </div>
+                 {{/if}}
+                 {{#if eachannoncement.pdfName}}
+                  <div class="col-md-6">
+                    <p>PDf</p>
+                   <embed src="/{{eachannoncement.pdfAddress}}"  style="width: 100%; height: 250px;">
+                </div>
+                {{/if}}
+            </div>
+       <!-- /#page-content-wrapper -->
+
+    </div>
+</div>
+    <!-- /#wrapper -->

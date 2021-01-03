@@ -1,51 +1,15 @@
-<div class="side d-flex flex-row bd-highlight">
-    <aside class="sidenav">
-        <ul>
-            <li>
-                <a href="/tutor">Home</a>
+<div class="d-flex" id="wrapper">
 
-            </li>
-            <li>
-                <a href="/tutor-Profile">Profile</a>
+    <!-- Sidebar -->
+    {{#if user}}
+    {{>tutor-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
 
-            </li>
-            <li>
-                <a href="/tutor-students">Students</a>
-            </li>
-            <li>
-                <a href="/tutor-attendance">Attendance</a>
+    <!-- Page Content -->
 
-            </li>
-            <li>
-                <a href="/tutor-assignment">assignment</a>
-
-            </li>
-            <li>
-                <a href="/tutor-notes">Notes</a>
-
-            </li>
-            <li>
-                <a href="/tutor-announcement">Announcement</a>
-            </li>
-            <li>
-                <a href="/tutor-events">Events</a>
-
-            </li>
-            <li>
-                <a href="/tutor-photos">Photos</a>
-
-            </li>
-        </ul>
-
-
-
-
-    </aside>
-
-    <div class="main">
-        <section>
-            <div class="container ">
-                <h2 class="text-center mb-4 ">Add Student</h2>
+    <div class="container-fluid">
+        <h2 class="text-center mb-4 ">Add Student</h2>
                 {{#if Err}}
                 <div class="alert alert-danger text-center  " role="alert">
                     File name or Email or Mob already used!
@@ -144,12 +108,14 @@
 
                     </div>
                 </div>
-            </div>
-        </section>
-    </div>
 
-
-
+        
+     
+    <!-- /#page-content-wrapper -->
 
 </div>
 </div>
+<!-- /#wrapper -->
+
+
+ 

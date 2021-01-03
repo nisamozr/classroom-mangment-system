@@ -1,0 +1,54 @@
+
+
+
+
+<div class="d-flex" id="wrapper">
+
+    <!-- Sidebar -->
+    {{#if students}}
+    {{>student-sidenav}}
+    {{/if}}
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+
+    <div class="container-fluid">
+          <div class="row topic">
+                <div class="col-md-12 m-2 ">
+                    <h3 class="text-center">Events</h3>
+                </div>
+                <table class="table table-striped text-center">
+                    <thead>
+
+                        <tr>
+                            <th scope="col">Event Date</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Event Type</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {{#each event}}
+                        <tr>
+                            
+
+                            <td>{{this.EventDate}}</td>
+                            <td> <a href="/student/eachevent{{this._id}}">{{this.EventName}}</a></td>
+                              <td>
+                                  <div >{{this.EventType}}</div>
+                              </td>
+                        </tr>
+                        {{/each}}
+                       
+                       
+
+                    </tbody>
+                </table>
+
+
+
+            </div><!-- /#page-content-wrapper -->
+
+    </div>
+</div>
+    <!-- /#wrapper -->

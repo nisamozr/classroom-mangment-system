@@ -47,4 +47,80 @@ function photoValidation() {
         return false;
     }
 }
+// sideNavar toggel
+$("#menu-toggle").click(function (e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+
+//Annonsement
+
+//image
+var loadFile = function (event) {
+    var output = document.getElementById('imageoutput');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function () {
+        URL.revokeObjectURL(output.src) // free memory
+    }
+
+};
+function cleaarimage() {
+    document.getElementById('photoFile').value = null
+    document.getElementById('imageoutput').src = "#";
+
+
+}
+
+//video
+var loadvideoFile = function (event) {
+    var output = document.getElementById('videoview');
+
+    let file = event.target.files[0];
+    let blobURL = URL.createObjectURL(file);
+    document.querySelector("#videoview").src = blobURL;
+
+};
+
+function clearvideo() {
+    document.getElementById('videoFile').value = null
+    document.getElementById('videoview').src = "";
+
+
+    let vv = document.querySelector("#videoview")
+
+    vv.removeAttribute('src');
+
+
+}
+function videotoggel() {
+    var x = document.getElementById("videoDiv");
+    vv = document.querySelector("#videoview")
+    if (vv.src == "") {
+        x.style.display === "none"
+
+    }
+    else {
+        x.style.display = "block";
+
+    }
+
+
+}
+//pdf
+var loaddfFile = function (event) {
+    var output = document.getElementById('pdfDoc');
+    output.src = URL.createObjectURL(event.target.files[0]);
+    output.onload = function () {
+        URL.revokeObjectURL(output.src) // free memory
+    }
+
+};
+function cleaarpdf() {
+    document.getElementById('filePdf').value = null
+    document.getElementById('pdfDoc').src = "";
+
+
+}
+
+
 
