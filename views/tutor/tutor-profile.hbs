@@ -5,27 +5,19 @@
     {{>tutor-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
         <div class="text-center mt-5 mb-5">  <h3>Profile</h3></div>
          
             <div class="row">
                 <div class="col-md-12 col-lg-6 pro-pic">
-                    {{#if tutorprofil.image}}
-                  
-                    <img src='/uploded/tutor/profile/{{tutorprofil._id}}{{tutorprofil.image.name}}'alt="">   
-
+                    {{#if tutorprofil.image}} 
+                    <img src='/uploded/tutor/profile/{{tutorprofil._id}}{{tutorprofil.image.name}}'alt="" style="border-radius: 50%;">   
                     {{else}}
                      <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="">   
-                    {{/if}}
-                   
-                    
-                    
+                    {{/if}}                                                      
                 </div>
-                <div class="col-md-12 col-lg-6 profile-details">
-                    
+                <div class="col-md-12 col-lg-6 profile-details">                   
                     <table>
                         <tr>
                             <th>Name:</th>
@@ -34,7 +26,6 @@
                         <tr>
                             <th>Job:</th>
                             <td>{{tutorprofil.Job}}</td>
-
                         </tr>
                          <tr>
                             <th>Genter:</th>
@@ -54,11 +45,8 @@
                             <th>Email:</th>
                             <td>{{tutorprofil.Email}}</td>
                         </tr>
-
                     </table>
-
                 </div>
-
             </div>
             <div class="row">
                 <div class="col-lg-12 profil-edit">
@@ -66,11 +54,7 @@
                     <a href="/tutor-profile-edit" class="btn btn-success">Edit</a>
                 </div>
             </div>
-
-        
-     
     <!-- /#page-content-wrapper -->
-
 </div>
 </div>
 <!-- /#wrapper -->

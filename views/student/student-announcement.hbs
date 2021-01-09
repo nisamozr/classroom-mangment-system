@@ -1,15 +1,11 @@
 
-
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if students}}
     {{>student-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
         <div class="row topic">
             <div class="col-md-12 m-2 ">
@@ -18,31 +14,22 @@
             <div class=" table-wrapper-scroll-y my-custom-scrollbar" style="height: 500px;">
             <table class="table table-striped text-center">
                 <thead>
-
                     <tr>
                         <th scope="col">Date</th>
                         <th scope="col">Subject</th>
                     </tr>
-
                 </thead>
                 <tbody>
                     {{#each annoncement}}
                     <tr>
-
                         <td>{{this.PostDate}}</td>
                         <td> <a href="/student/eachannouncement{{this._id}}">{{this.Message}}</a></td>
                     </tr>
                     {{/each}}
-
-
                 </tbody>
             </table>
             </div>
-
-
-
         </div ><!-- /#page-content-wrapper -->
-
     </div>
 </div>
     <!-- /#wrapper -->

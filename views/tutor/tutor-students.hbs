@@ -1,20 +1,16 @@
 <div class="d-flex" id="wrapper">
-
   <!-- Sidebar -->
   {{#if user}}
   {{>tutor-sidenav}}
   {{/if}}
   <!-- /#sidebar-wrapper -->
-
   <!-- Page Content -->
-
   <div class="container-fluid">
-        <div class="row studenDetails">
+    <div class="row studenDetails">
       <div class="col-md-6">
         <h3>Students Details</h3>
       </div>
       <div class="col-md-6">
-
         <a href="/tutor-addStudent" class="btn btn-primary"> Add Student</a>
       </div>
     </div>
@@ -27,13 +23,11 @@
               <th scope="col" width=35%>Name</th>
               <th scope="col" width=30%>Mobile</th>
               <th scope="col">Action</th>
-
             </tr>
           </thead>
           <tbody>
             {{#each studentslist}}
             <tr>
-
               <th scope="row">{{inc @index}} </th>
               <td><a href="/tutor-studentDetails{{this._id}}">{{this.Name}}</a></td>
               <td>{{this.Mobile}}</td>
@@ -57,28 +51,14 @@
                       d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z">
                     </path>
                   </svg></a>
-
-
               </td>
-
             </tr>
-
             {{/each}}
-
-
           </tbody>
         </table>
       </div>
     </div>
-
-
-
-
     <!-- /#page-content-wrapper -->
-
   </div>
 </div>
 <!-- /#wrapper -->
-
-
-

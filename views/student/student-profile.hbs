@@ -1,73 +1,54 @@
-
-
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if students}}
     {{>student-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12 text-center mt-5 mb-5">
                 <h3>Profile</h3>
             </div>
         </div>
-          
-            <div class="row">
-                 
-                <div class="col-md-12 col-lg-6 pro-pic mb-3">
-                    {{#if tutorprofil.image}}
-                  
-                    <img src='/uploded/tutor/profile/{{tutorprofil._id}}{{tutorprofil.image.name}}'alt="">   
-
-                    {{else}}
-                     <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="">   
-                    {{/if}}
-                   
-                    
-                    
-                </div>
-                <div class="col-md-12 col-lg-6 profile-details">
-                    
-                    <table>
-                        <tr>
-                            <th>Name:</th>
-                            <td>{{studentprofil.Name}}</td>
-                        </tr>
-                        <tr>
-                            <th>Class:</th>
-                            <td>{{studentprofil.Class}}</td>
-
-                        </tr>
-                         <tr>
-                            <th>Genter:</th>
-                            <td>{{studentprofil.Gender}}</td>
-
-                        </tr>
-                        <tr>
-                            <th>Address:</th>
-                            <td>{{studentprofil.Address}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Mobile:</th>
-                            <td>{{studentprofil.Mobile}}</td>
-                        </tr>
-                        <tr>
-                            <th>Email:</th>
-                            <td>{{studentprofil.Email}}</td>
-                        </tr>
-
-                    </table>
-
-                </div>
-
-            </div><!-- /#page-content-wrapper -->
-
+        <div class="row">
+            <div class="col-md-12 col-lg-6 pro-pic mb-3">
+                {{#if studentprofil.imagelocation}}
+                <img src='/{{studentprofil.imagelocation}}' alt="" style="border-radius: 50%;">
+                {{else}}
+                <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png" alt="">
+                {{/if}}
+            </div>
+            <div class="col-md-12 col-lg-6 profile-details">
+                <table>
+                    <tr>
+                        <th>Name:</th>
+                        <td>{{studentprofil.Name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Class:</th>
+                        <td>{{studentprofil.Class}}</td>
+                    </tr>
+                    <tr>
+                        <th>Genter:</th>
+                        <td>{{studentprofil.Gender}}</td>
+                    </tr>
+                    <tr>
+                        <th>Address:</th>
+                        <td>{{studentprofil.Address}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Mobile:</th>
+                        <td>{{studentprofil.Mobile}}</td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td>{{studentprofil.Email}}</td>
+                    </tr>
+                </table>
+            </div>
+        </div><!-- /#page-content-wrapper -->
     </div>
 </div>
-    <!-- /#wrapper -->
+<!-- /#wrapper -->

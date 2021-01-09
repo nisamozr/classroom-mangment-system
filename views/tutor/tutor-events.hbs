@@ -1,26 +1,17 @@
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if user}}
     {{>tutor-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
-
-
         <div class="row studenDetails">
             <div class="col-md-6">
                 <h3>Event</h3>
             </div>
-
         </div>
-
         <div class="row topic">
-
-
             <div class="row w-50  ">
                 <form id="addevent" action="/tutor-events" enctype="multipart/form-data" method="POST">
                     <div class="mb-3">
@@ -53,22 +44,13 @@
                         <label for="formFileMultiple" class="form-label"> Video File </label>
                         <input class="form-control" name="VideoFile" id="videofile" type="file"
                             onchange=" return videoValidation()" multiple>
-                        <div class="progress">
-                            <div class="bar"></div>
-                            <div class="percent">0%</div>
-
-                        </div>
-
                         <div class="mb-3">
                             <label class="form-label"> Image </label>
                             <input class="form-control" type="file" name="Photos" class="photoFile" id="photoFile"
                                 onchange="return photoValidation()">
-
                         </div>
-
                         <div class="mb-3">
                             <label for="formFileMultiple" class="form-label"> Event Type </label>
-
                         </div>
                         <div class="form-check">
                             <label class="form-check-label" for="exampleRadios1">
@@ -76,7 +58,6 @@
                             </label>
                             <input class="form-check-input" type="radio" name="EventType" id="chkNo" value="free"
                                 checked onclick="EnableDisableTextBox()">
-
                         </div>
                         <div class="form-check">
                             <label class="form-check-label" for="exampleRadios2">
@@ -84,40 +65,23 @@
                             </label>
                             <input class="form-check-input" type="radio" name="EventType" id="chkYes" value="Paid"
                                 onclick="EnableDisableTextBox()">
-
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Event Price:</label>
                             <input type="number" class="form-control" id="txtPassportNumber"
                                 placeholder="Enter event price" name="Price" disabled="disabled" required />
                         </div>
-
+                        <div class="progress mb-2 mt-2" id="progress" style="display: none;">
+                            <div class="bar"></div>
+                            <div class="percent">0%</div>
+                        </div>
                         <button type="submit" id="sendNotfication" class="btn btn-primary">save</button>
                     </div>
-
-
-
-
-
-
-
                     {{!-- <div id="status"></div> --}}
                     <!-- Progress bar -->
-
-
-
-
             </div>
-
-
-
-
         </div>
-
-
-
         <!-- /#page-content-wrapper -->
-
     </div>
 </div>
 <!-- /#wrapper -->
@@ -126,9 +90,6 @@
 
 
 <script type="text/javascript">
-
-
-
     function EnableDisableTextBox() {
         var chkYes = document.getElementById("chkYes");
         var txtPassportNumber = document.getElementById("txtPassportNumber");
@@ -138,23 +99,27 @@
 
         }
     }
-
-
-
-
-
 </script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-<script src="http://malsup.github.com/jquery.form.js"></script>
-<script>
-    (function () {
 
+<script>
+
+    (function () {
+        var file = document.getElementById("videofile")
         var bar = $('.bar');
         var percent = $('.percent');
         var status = $('#status');
+        var pp = document.getElementById("progress")
+
+
+
 
         $('form').ajaxForm({
+
+
+
+
             beforeSend: function () {
+                pp.style.display = "block"
                 status.empty();
                 var percentVal = '0%';
                 bar.width(percentVal)
@@ -174,6 +139,10 @@
                 status.html(xhr.responseText);
             }
         });
+
+
+
+
 
     })();       
 </script>

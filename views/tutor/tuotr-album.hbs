@@ -1,41 +1,27 @@
-
-
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if user}}
     {{>tutor-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
-       <div class="row">
-                {{#each photo}}
-                <div class="col-md-4 pb-4">
-                    <div class="card" style="width: 18rem;">
-                        <a href="/{{this.Photos.FileAddress}}">
-                            
-                            <img src="/{{this.Photos.FileAddress}}" class="card-img-top  " style="height: 200px;"
-                                alt="gfdbgfb"></a>
-                        <div class="card-body">
-                            <h5 class="card-title">{{this.Photos.Topic}}</h5>
+        <div class="row">
+            {{#each photo}}
+            <div class="col-md-4 pb-4">
+                <div class="card" style="width: 18rem;">
+                    <a href="/{{this.Photos.FileAddress}}">
 
-                        </div>
+                        <img src="/{{this.Photos.FileAddress}}" class="card-img-top  " style="height: 200px;"
+                            alt="gfdbgfb"></a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{this.Photos.Topic}}</h5>
                     </div>
                 </div>
-                {{/each}}
-
-
-
             </div>
-
-        
-     
-    <!-- /#page-content-wrapper -->
-
-</div>
+            {{/each}}
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
 </div>
 <!-- /#wrapper -->
-

@@ -1,23 +1,16 @@
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if students}}
     {{>student-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
         <div class="row topic">
             <div class="col-md-12 m-2 ">
                 <h3 class="text-center">Notes</h3>
             </div>
-
         </div>
-
-
-
         <div class="row mt-5">
             <div class="col-md-12 ">
                 <table class="table table-striped text-center">
@@ -26,8 +19,6 @@
                             <th scope="col">Topic</th>
                             <th scope="col">File</th>
                             <th scope="col">Date</th>
-
-
                         </tr>
                     </thead>
                     <tbody>
@@ -58,32 +49,13 @@
                             <td>
                                 {{this.PostAt}}
                             </td>
-
-
                         </tr>
                         {{/each}}
-
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
     <!-- /#page-content-wrapper -->
-
 </div>
 </div>
-<!-- /#wrapper -->
-
-{{!-- $('#video').click(function(event) { 
-    event.preventDefault(); 
-    $.ajax({
-        url: $(this).attr('href'),
-         data: {
-               _id:this._id
-            },
-        success: function(response) {
-            alert(response);
-        }
-    });
-    return false; // for good measure
-}); --}}

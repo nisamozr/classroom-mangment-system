@@ -1,44 +1,28 @@
-
-
-
-
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if students}}
     {{>student-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
-         <div class="row topic">
-                <div class="col-md-12 m-2 ">
-                    <h3 class="text-center">Photos</h3>
+        <div class="row topic">
+            <div class="col-md-12 m-2 ">
+                <h3 class="text-center">Photos</h3>
+            </div>
+            <div class="row w-50  ">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">Topics</label>
+                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                        placeholder="Enter you Topics">
                 </div>
-                <div class="row w-50  ">
-
-                    <div class="mb-3">
-                        <label for="exampleFormControlInput1" class="form-label">Topics</label>
-                        <input type="text" class="form-control" id="exampleFormControlInput1"
-                            placeholder="Enter you Topics">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="formFileMultiple" class="form-label"> files </label>
-                        <input class="form-control" type="file" id="formFileMultiple" multiple>
-                    </div>
-
-
-
-
-                    <button type="button" class="btn btn-primary">save</button>
+                <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label"> files </label>
+                    <input class="form-control" type="file" id="formFileMultiple" multiple>
                 </div>
-
-
-            </div><!-- /#page-content-wrapper -->
-
+                <button type="button" class="btn btn-primary">save</button>
+            </div>
+        </div><!-- /#page-content-wrapper -->
     </div>
 </div>
 <!-- /#wrapper -->

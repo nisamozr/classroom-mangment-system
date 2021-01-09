@@ -1,47 +1,56 @@
 <div class="d-flex" id="wrapper">
-
   <!-- Sidebar -->
   {{#if user}}
   {{>tutor-sidenav}}
   {{/if}}
   <!-- /#sidebar-wrapper -->
-
   <!-- Page Content -->
-
   <div class="container-fluid">
     <div class="row">
       <div class="col-lg-12">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">
-
             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-
             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
             <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
           </ol>
           <div class="carousel-inner">
-
             <div class="carousel-item active">
               <a href="/toutor-photoAlbum">
-                <img src="{{photo.FileName }}" class="d-block w-100" alt="...">
-              </a>
-            </div>
+                {{#if photo1}}
+                <img src="{{photo1.Photos.FileAddress }}" class="d-block w-100" alt="...">
+                {{else}}
+                <img src="/images/background/default-cover.png" class="d-block w-100" alt="...">
 
-
-            <div class="carousel-item">
-              <a href="/toutor-photoAlbum">
-                <img src="{{photo2.FileAddress }}" class="d-block w-100" alt="...">
+                {{/if}}
               </a>
             </div>
             <div class="carousel-item">
               <a href="/toutor-photoAlbum">
-                <img src="{{photo3.FileAddress }}" class="d-block" alt="...">
+                {{#if photo2}}
+                <img src="{{photo2.Photos.FileAddress }}" class="d-block w-100" alt="...">
+                {{else}}
+                <img src="/images/background/default-cover.png" class="d-block w-100" alt="...">
+                {{/if}}
               </a>
             </div>
             <div class="carousel-item">
               <a href="/toutor-photoAlbum">
-                <img src="{{photo4.FileAddress }}" class="d-block" alt="...">
+                {{#if photo3}}
+                <img src="{{photo3.Photos.FileAddress }}" class="d-block" alt="...">
+                {{else}}
+                <img src="/images/background/default-cover.png" class="d-block w-100" alt="...">
+                {{/if}}
+              </a>
+            </div>
+            <div class="carousel-item">
+              <a href="/toutor-photoAlbum">
+                {{#if photo4}}
+                <img src="{{photo4.Photos.FileAddress }}" class="d-block" alt="...">
+                {{else}}
+                <img src="/images/background/default-cover.png" class="d-block w-100" alt="...">
+                {{/if}}
               </a>
             </div>
           </div>
@@ -54,41 +63,36 @@
             <span class="sr-only">Next</span>
           </a>
         </div>
-
       </div>
     </div>
-
     <div class="row">
       <div class="col-md-6">
         <div class="dash ">
           <h5>Announcerments</h5>
           <hr>
-          <ul>
-            {{#each annoncement}}
-            <li> <a href='/tutor-announcement'>{{this.Message}}</a></li>
-            {{/each}}
-
-          </ul>
+          <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 220px;">
+            <ul>
+              {{#each annoncement}}
+              <li> <a href='/tutor-announcement'>{{this.Message}}</a></li>
+              {{/each}}
+            </ul>
+          </div>
         </div>
-
-
-
       </div>
-
       <div class="col-md-6">
-
-        <div class="dash table-wrapper-scroll-y my-custom-scrollbar" style="height: 300px;">
+        <div class="dash ">
           <h5>Events</h5>
           <hr>
-          <ul>
-            {{#each event}}
-            <li> <a href='/tutor-events'>{{this.EventName}}</a></li>
-            {{/each}}
+          <div class="table-wrapper-scroll-y my-custom-scrollbar" style="height: 220px;">
+            <ul>
+              {{#each event}}
+              <li> <a href='/tutor-events'>{{this.EventName}}</a></li>
+              {{/each}}
 
-          </ul>
+            </ul>
+          </div>
         </div>
       </div>
-
     </div>
     <div class="row">
       <div class="col-md-12">
@@ -97,80 +101,35 @@
           <hr>
           <ul>
             <div class="table-wrapper-scroll-y my-custom-scrollbar">
-
               <table class="table table-bordered table-striped mb-0 text-center">
                 <thead>
                   <tr>
-
                     <th scope="col">Date</th>
-                    <th scope="col">Attendance</th>
-                    <th scope="col">Attendance</th>
-
-
+                    <th scope="col">Name of student</th>
+                    <th scope="col">Event Name</th>
                   </tr>
                 </thead>
                 <tbody>
-
+                  {{#each BookedEvent}}
                   <tr>
-                    <td>ytjhkj</td>
-                    <td>ytjhkj</td>
-                    <td>jhgjhkj</td>
+                    <td>{{this.Date}}</td>
+                    <td>{{this.studentName}}</td>
+                    <td>{{this.eventName}}</td>
                   </tr>
-
-                  <tr>
-                    <td>ytjhkj</td>
-                    <td>ytjhkj</td>
-                    <td>jhgjhkj</td>
-                  </tr>
-
-                  <tr>
-                    <td>ytjhkj</td>
-                    <td>ytjhkj</td>
-                    <td>jhgjhkj</td>
-                  </tr>
-
-                  <tr>
-                    <td>ytjhkj</td>
-                    <td>ytjhkj</td>
-                    <td>jhgjhkj</td>
-                  </tr>
-
-                  <tr>
-                    <td>ytjhkj</td>
-                    <td>ytjhkj</td>
-                    <td>jhgjhkj</td>
-                  </tr>
-
-                  <tr>
-                    <td>ytjhkj</td>
-                    <td>ytjhkj</td>
-                    <td>jhgjhkj</td>
-                  </tr>
-
+                  {{/each}}
                 </tbody>
               </table>
-
             </div>
-
           </ul>
         </div>
-
-
-
       </div>
-
     </div>
-  
-  <footer>
-    <h5>Contact Details</h5>
-    <p><span>Principal:</span>987654321, <span>HOD:</span>987654321, <span>Tutor:</span>987654321</p>
-  </footer>
+    <footer>
+      <h5>Contact Details</h5>
+      <p><span>Principal:</span>987654321, <span>HOD:</span>987654321, <span>Tutor:</span>987654321</p>
+    </footer>
   </div>
-
-
-
   <!-- /#page-content-wrapper -->
-
 </div>
 </div>
 <!-- /#wrapper -->

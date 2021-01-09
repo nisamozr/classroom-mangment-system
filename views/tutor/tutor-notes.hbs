@@ -1,13 +1,10 @@
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if user}}
     {{>tutor-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
           <div class="row topic">
                 <div class="col-md-12 m-2 ">
@@ -20,41 +17,30 @@
                 </div>
                 <div class="row w-50  ">
                     <form action="/tutor-notes" method="post" enctype="multipart/form-data">
-
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Topics</label>
                             <input type="text" class="form-control" name="Topic" id="exampleFormControlInput1"
                                 placeholder="Enter you Topics" required>
                         </div>
-
                         <div class="mb-3">
                             <label for="formFileMultiple" class="form-label"> Document </label>
                             <input class="form-control" name="Document" type="file" id="filePdf"
                                 onchange="return fileValidation()" required multiple>
                         </div>
                         <div class="mb-3">
-
                             <label for="formFileMultiple" class="form-label"> Video File </label>
                             <input class="form-control" name="VideoFile" id="videofile" type="file" onchange=" return videoValidation()" required multiple>
                         </div>
                         <div class=" text-center">
-
                             <label for="formFileMultiple" class="form-label "> <b>OR</b> </label>
-
                         </div>
                         <div class="mb-3">
                             <label for="exampleFormControlInput1" class="form-label">Youtub link</label>
                             <input type="url" class="form-control" name="Link" id="Link" placeholder="link">
                         </div>
-
-
-
-
                         <button type="submit" class="btn btn-primary">Post</button>
                     </form>
                 </div>
-
-
             </div>
             <div class="row mt-5">
                 <div class="col-md-12 table-wrapper-scroll-y my-custom-scrollbar" style="max-height: 300px;">
@@ -64,7 +50,6 @@
                                 <th scope="col" width=15%>Topic</th>
                                 <th scope="col" width=65%>File</th>
                                 <th scope="col">Delete</th>
-
                             </tr>
                         </thead>
                         <tbody>
@@ -105,20 +90,13 @@
                                                 d="M9.206 7.501a.75.75 0 01.793.705l.5 8.5A.75.75 0 119 16.794l-.5-8.5a.75.75 0 01.705-.793zm6.293.793A.75.75 0 1014 8.206l-.5 8.5a.75.75 0 001.498.088l.5-8.5z">
                                             </path>
                                         </svg></a></td>
-
                             </tr>
                             {{/each}}
-
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
-        
-     
     <!-- /#page-content-wrapper -->
-
 </div>
 </div>
 <!-- /#wrapper -->

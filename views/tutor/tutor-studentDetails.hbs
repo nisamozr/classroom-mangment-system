@@ -1,13 +1,10 @@
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if user}}
     {{>tutor-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
              <div class="row p-5">
                 <div class="col-md-7">
@@ -42,15 +39,12 @@
                 <div class="col-md-5 pro-pic">
                     {{#if studentId.image}}
 
-                    <img src='{{studentId.imagelocation}}' alt="">
+                    <img src='{{studentId.imagelocation}}' alt="" style="border-radius: 50%;">
 
                     {{else}}
                     <img src="https://www.pavilionweb.com/wp-content/uploads/2017/03/man-300x300.png"
                         style="width: 8rem; height: 8rem;" alt="">
                     {{/if}}
-
-
-
                 </div>
                 <hr class="mt-2">
             </div>
@@ -115,11 +109,6 @@
                     </table>
                 </div>
             </div>
-
-
-
-        
-     
     <!-- /#page-content-wrapper -->
 
 </div>

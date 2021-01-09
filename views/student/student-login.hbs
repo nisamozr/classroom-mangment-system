@@ -1,5 +1,4 @@
 <div class="bg">
-
   <div class="custom-shape-divider-top-1606467789">
     <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
       <path
@@ -23,30 +22,22 @@
     Concurrent verifications to the same number are not allowed!
   </div>
   {{/if}}
-   {{#if Err}}
+  {{#if Err}}
   <div class="alert alert-danger text-center  " role="alert">
     OTP not mach!
   </div>
   {{/if}}
-
   <div class=" login ">
     <h1 class="mb-5">Student Login</h1>
     <form action="/student/login" method="post">
       <div class="form-group">
-
         <label for="exampleInputEmail1">Mobile Number</label>
         <input type="tel" class="form-control mt-2" name="Mobile" id="exampleInputEmail1" aria-describedby="emailHelp"
           required>
         <a href="/student/login-email">login with email</a>
       </div>
-
-
-
       <button type="submit" class="btn btn-primary mt-2 mr-5">Login</button>
-      
     </form>
-   
   </div>
-
 </div>
 </div>

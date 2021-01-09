@@ -1,15 +1,11 @@
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if user}}
     {{>tutor-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
-
         <div class="row topic">
             <div class="col-md-12 m-2 ">
                 <h3 class="text-center">Photos</h3>
@@ -18,148 +14,35 @@
                 <div class="box-2">
                     <div class="result"></div>
                 </div>
-
-
-
                 <form action="/tutor-photos" id="photoform" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Topics</label>
                         <input type="text" class="form-control" id="topic" name="Topic" placeholder="Enter you Topics"
                             required>
                     </div>
-                     <input id="cropped_image" type="text" name="xcrop" hidden />
-                        <input id="cropped_image1" type="text" name="ycrop" hidden />
-                        <input id="cropped_image2" type="text" name="widthcrop" hidden />
-                        <input id="cropped_image3" type="text" name="hightcrop" hidden />
-
+                    <input id="cropped_image" type="text" name="xcrop" hidden />
+                    <input id="cropped_image1" type="text" name="ycrop" hidden />
+                    <input id="cropped_image2" type="text" name="widthcrop" hidden />
+                    <input id="cropped_image3" type="text" name="hightcrop" hidden />
                     {{!-- onchange="return photoValidation()"  id="photoFile"  --}}
                     <div class="mb-3">
                         <label for="filePdf" class="form-label"> files </label>
                         <input class="form-control" type="file" name="Photos" class="photoFile" id="image"
                             onchange="readURL(this);" required>
-
                     </div>
-                   
-
-                    <div class="image_container" style="max-height: 300px;width: 400px;">
-                        <img id="blah"
-                            src="" />
+                    <div class="image_container" style="max-height: 300px;width: 450px;">
+                        <img id="blah" src="" />
                     </div>
                     {{!-- <div id="cropped_result"></div>
                         <button id="crop_button">Crop</button> --}}
-
-                    <button type="submit" class="btn btn-primary " style="margin-top: 100px;">Post</button>
-
+                    <button type="submit" class="btn btn-primary ">Post</button>
                 </form>
-
-
             </div>
-
-
-
-
-
         </div>
-
-
-
         <!-- /#page-content-wrapper -->
-
     </div>
 </div>
 <!-- /#wrapper -->
 
 
 
-
-<script src="https://unpkg.com/blob-util/dist/blob-util.min.js"></script>
-
-<script>
-
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $('#blah').attr('src', e.target.result)
-            };
-            reader.readAsDataURL(input.files[0]);
-            setTimeout(ss, 500);
-        }
-    }
-    function ss() {
-        var el = document.getElementById('blah');
-
-
-        const cropper = new Cropper(el, {
-            aspectRatio: 16 / 9,
-            crop(event) {
-                console.log(event.detail.x);
-                console.log(event.detail.y);
-                console.log(event.detail.width);
-                console.log(event.detail.height);
-                console.log(event.detail.rotate);
-                console.log(event.detail.scaleX);
-                console.log(event.detail.scaleY);
-                document.getElementById('cropped_image').value = event.detail.x;
-                document.getElementById('cropped_image1').value = event.detail.y;
-                document.getElementById('cropped_image2').value = event.detail.width;
-                document.getElementById('cropped_image3').value = event.detail.height;
-            },
-        });
-    }
-</script>
-{{!-- <script type="text/javascript">
-        var gg
-        //$('#blah').croppie();
-
-
-        function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#blah').attr('src', e.target.result)
-                };
-                reader.readAsDataURL(input.files[0]);
-                setTimeout(ss, 100);
-            }
-        }
-        function ss() {
-            var el = document.getElementById('blah');
-            var resize = new Croppie(el, {
-                viewport: { width: 400, height: 300 },
-                boundary: { width: 500, height: 400 },
-                showZoomer: false,
-                enableResize: true,
-                enableOrientation: true,
-                mouseWheelZoom: 'ctrl'
-            });
-
-
-
-
-            resize.result('blob').then(function (blob) {
-
-                var formData = new FormData();
-
-                formData.append('cropimage', blob, "filename");
-                formData.append('Topic', document.getElementById('topic').value);
-
-                $('#photoform').submit(function () {
-                    // do something with cropped blob
-                    $.ajax({
-                        url: "/tutor-photos",
-                        type: "POST",
-                        data: formData,
-
-                        contentType: false, // NEEDED, DON'T OMIT THIS (requires jQuery 1.6+)
-                        processData: false,
-                        success: () => {
-                            alert("schhxvfc")
-                        }
-
-                    });
-                    return false
-                })
-            });
-        }
-</script> --}}

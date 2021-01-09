@@ -1,150 +1,107 @@
-
-
-
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if students}}
     {{>student-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
-         <div class="row ">
-                  {{#each note.Notes}}
-                <div class="col-md-12 col-lg-4 mb-4">
-                    <div class="card text-center">
-                        <div class="card-header">
-                            Notes(video)
-                           
-                        </div>
-                        <div class="card-body">
-                      
-                            <a href="/{{this.VideoAddress}}" onclick="changeQuantity('{{this._id}}')" id="video">
+        <div class="row ">
+            {{#each note.Notes}}
+            <div class=" col-md-12 col-lg-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-header">
+                        Notes(video)
+                    </div>
+                    <div class="card-body">
+                        <a href="/{{this.VideoAddress}}" onclick="changeQuantity('{{this._id}}')" id="video">
                             <div class="embed-responsive embed-responsive-1by1">
                                 {{!-- <iframe class="embed-responsive-item" src="/OptionPrintkeam"></iframe> --}}
-                               <video  src="/{{this.VideoAddress}}" controls></video>
+                                <video src="/{{this.VideoAddress}}" controls></video>
                             </div>
-                            </a>
-                            <h5 class="card-title"> {{this.Topic}}</h5>
-                           <p>Wach video for Attendance</p>
-                           
-                        </div>
-                        <div class="card-footer text-muted">
-                            {{this.PostAt}}
-                        </div>
+                        </a>
+                        <h5 class="card-title"> {{this.Topic}}</h5>
+                        <p>Wach video for Attendance</p>
                     </div>
-
-
+                    <div class="card-footer text-muted">
+                        {{this.PostAt}}
+                    </div>
                 </div>
-
-                <div class="col-md-12 col-lg-4 mb-4">
-                    <div class="card text-center ">
-                        <div class="card-header">
-                             Notes(PDF)
-                        </div>
-                        
-                        <div class="card-body">
-                        
-                         <div>
-                            <embed src="/{{this.DocumentAddress}}" id="pdfDoc"  width="500" height="375">
-                            </div>
-                            
-                            <h5 class="card-title">{{this.Topic}}</h5>
-                           
-                            <a href="/{{this.DocumentAddress}}" class="btn btn-primary">Opent Document</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                           {{this.PostAt}}
-                        </div>
-                    </div>
-
-
-                </div>
-                {{#if this.Link}}
-                <div class="col-md-12 col-lg-4 mb-4">
-                    <div class="card text-center">
-                        <div class="card-header">
-                              Notes(youtube)
-                        </div>
-                        <div class="card-body">
-                            
-                            <div class="embed-responsive embed-responsive-1by1">
-                                <iframe class="embed-responsive-item"
-                                    src="{{this.Link}}"></iframe>
-                            </div>
-                            
-                            <h5 class="card-title">{{this.Topic}}</h5>
-                           
-                            
-                            <a href="{{this.Link}}" class="btn btn-primary">Open Link</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                            {{this.PostAt}}
-                        </div>
-                    </div>
-
-
-                </div>
-                {{/if}}
-                {{/each}}
-                 {{#each Assig.Assignment}}
-                 <div class="col-md-12 col-lg-4 mb-4">
-                    <div class="card text-center ">
-                        <div class="card-header">
-                            Assignment
-                        </div>
-                        <div class="card-body">
-                         
-                            <embed src="/{{this.FileAddress}}" id="pdfDoc"  width="500" height="375">
-                            <h5 class="card-title">{{this.Topic}}</h5>
-                            
-                            <a href="/{{this.FileAddress}}" class="btn btn-primary">Go Document</a>
-                        </div>
-                        <div class="card-footer text-muted">
-                           {{this.PostAt}}
-                        </div>
-                    </div>
-             
             </div>
-               {{/each}}
-
-
-                
-
-
-
-
+            <div class="col-md-12  col-lg-4 mb-4">
+                <div class="card text-center ">
+                    <div class="card-header">
+                        Notes(PDF)
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            <embed src="/{{this.DocumentAddress}}" id="pdfDoc" width="500" height="375">
+                        </div>
+                        <h5 class="card-title">{{this.Topic}}</h5>
+                        <a href="/{{this.DocumentAddress}}" class="btn btn-primary">Opent Document</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        {{this.PostAt}}
+                    </div>
+                </div>
             </div>
-            <hr>
-       <!-- /#page-content-wrapper -->
-
+            {{#if this.Link}}
+            <div class=" col-md-12 col-lg-4 mb-4">
+                <div class="card text-center">
+                    <div class="card-header">
+                        Notes(youtube)
+                    </div>
+                    <div class="card-body">
+                        <div class="embed-responsive embed-responsive-1by1">
+                            <iframe class="embed-responsive-item" src="{{this.Link}}"></iframe>
+                        </div>
+                        <h5 class="card-title">{{this.Topic}}</h5>
+                        <a href="{{this.Link}}" class="btn btn-primary">Open Link</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        {{this.PostAt}}
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            {{/each}}
+            {{#each Assig.Assignment}}
+            <div class="col-md-12 col-lg-4 mb-4">
+                <div class="card text-center ">
+                    <div class="card-header">
+                        Assignment
+                    </div>
+                    <div class="card-body">
+                        <embed src="/{{this.FileAddress}}" id="pdfDoc" width="500" height="375">
+                        <h5 class="card-title">{{this.Topic}}</h5>
+                        <a href="/{{this.FileAddress}}" class="btn btn-primary">Go Document</a>
+                    </div>
+                    <div class="card-footer text-muted">
+                        {{this.PostAt}}
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+        <hr>
+        <!-- /#page-content-wrapper -->
     </div>
 </div>
-    <!-- /#wrapper -->
-<script>
-   function changeQuantity(Id) {
+<!-- /#wrapper -->
 
+<script>
+    function changeQuantity(Id) {
         $.ajax({
             url: '/student/notes-attendense',
             data: {
-                video:Id             
+                video: Id
             },
             method: 'get',
-           
             success: (response) => {
-               
-                    alert("product removed from cart")
-                    onload()
-                   
-                
+                alert("product removed from cart")
+                onload()
             }
-
         })
-
     }
 
- 
 </script>

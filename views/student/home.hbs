@@ -1,126 +1,133 @@
 <div class="d-flex" id="wrapper">
-
   <!-- Sidebar -->
   {{#if students}}
   {{>student-sidenav}}
   {{/if}}
   <!-- /#sidebar-wrapper -->
-
   <!-- Page Content -->
-
   <div class="container-fluid">
-
-    
-      <div class="text-danger ">
-        <h6>Attendance : <span>{{Attendance.Attendance.Attendance}}</span></h6>
-      </div>
+    <div class="text-danger ">
+      <h6>Attendance : <span>{{Attendance.Attendance.Attendance}}</span></h6>
+    </div>
 
 
-      <div class="row">
-        <div class="col-lg-12">
-          <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
 
-              <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 
-              <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-              <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-            </ol>
-            <div class="carousel-inner">
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          </ol>
+          <div class="carousel-inner">
 
-              <div class="carousel-item active">
-                <a href="/student/photoAlbum">
-                  <img src="/{{photo1.FileNAme }}" class="d-block w-100" alt="...">
-                </a>
-              </div>
+            <div class="carousel-item active">
+              <a href="/toutor-photoAlbum">
+                {{#if photo1}}
+                <img src="/{{photo1.Photos.FileAddress }}" class="d-block w-100" alt="...">
+                {{else}}
+                <img src="/images/background/default-cover.png" class="d-block w-100" alt="...">
 
-
-              <div class="carousel-item">
-                <a href="/student/photoAlbum">
-                  <img src="{{photo2.FileAddress }}" class="d-block w-100" alt="...">
-                </a>
-              </div>
-              <div class="carousel-item">
-                <a href="/student/photoAlbum">
-                  <img src="{{photo3.FileAddress }}" class="d-block" alt="...">
-                </a>
-              </div>
-              <div class="carousel-item">
-                <a href="/student/photoAlbum">
-                  <img src="{{photo4.FileAddress }}" class="d-block" alt="...">
-                </a>
-              </div>
+                {{/if}}
+              </a>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
 
+
+            <div class="carousel-item">
+              <a href="/toutor-photoAlbum">
+                {{#if photo2}}
+                <img src="/{{photo2.Photos.FileAddress }}" class="d-block w-100" alt="...">
+                {{else}}
+                <img src="/images/background/default-cover.png" class="d-block w-100" alt="...">
+
+                {{/if}}
+
+              </a>
+            </div>
+            <div class="carousel-item">
+              <a href="/toutor-photoAlbum">
+
+                {{#if photo3}}
+                <img src="/{{photo3.Photos.FileAddress }}" class="d-block" alt="...">
+                {{else}}
+                <img src="/images/background/default-cover.png" class="d-block w-100" alt="...">
+
+                {{/if}}
+              </a>
+            </div>
+            <div class="carousel-item">
+              <a href="/toutor-photoAlbum">
+
+                {{#if photo4}}
+                <img src="/{{photo4.Photos.FileAddress }}" class="d-block" alt="...">
+                {{else}}
+                <img src="/images/background/default-cover.png" class="d-block w-100" alt="...">
+
+                {{/if}}
+              </a>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
+
       </div>
+    </div>
 
-      <div class="row">
-         <div class="col-md-12 col-lg-6">
-          <div class="dash table-wrapper-scroll-y my-custom-scrollbar" style="height: 300px;">
-            <h5>Announcerments</h5>
-            <hr>
-            <ul>
-              {{#each annoncement}}
-              <li><a href="/student/announcement">{{this.Message}}</a> </li>
-              {{/each}}
-
-            </ul>
-          </div>
-
-
-
-        </div>
-
-        <div class="col-md-12 col-lg-6">
-
-          <div class="dash table-wrapper-scroll-y my-custom-scrollbar" style="height: 300px;">
-            <h5>Events</h5>
-            <hr>
-            {{#each event}}
-            <li> <a href='/student/events'>{{this.EventName}}</a></li>
+    <div class="row">
+      <div class="col-md-12 col-lg-6 ">
+        <div class="dash table-wrapper-scroll-y my-custom-scrollbar " style="height: 300px;">
+          <h5>Announcerments</h5>
+          <hr>
+          <ul>
+            {{#each annoncement}}
+            <li><a href="/student/announcement">{{this.Message}}</a> </li>
             {{/each}}
-          </div>
-        </div>
 
+          </ul>
+        </div>
       </div>
-    
+
+      <div class="col-md-12 col-lg-6">
+        <div class="dash table-wrapper-scroll-y my-custom-scrollbar p-3" style="height: 300px;">
+          <h5>Events</h5>
+          <hr>
+          {{#each event}}
+          <li class="ml-2"> <a href='/student/events'>{{this.EventName}}</a></li>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+
     <footer>
       <h5>Contact Details</h5>
       <p><span>Principal:</span>987654321, <span>HOD:</span>987654321, <span>Tutor:</span>987654321</p>
     </footer>
 
-
-  
-  <!-- /#page-content-wrapper -->
-
-</div>
-<!-- /#wrapper -->
+    <!-- /#page-content-wrapper -->
+  </div>
+  <!-- /#wrapper -->
 
 
 
-<script>
-  var socket = io('http://localhost:3000')
+  <script>
+    var socket = io('http://localhost:3000')
 
-  socket.on("messageSend", function (details) {
-    console.log(details)
-    $.notify("Tutor Post Assignment\n" + "Name:" + details.name, {
-      autoHide: false,
-      className: "success"
+    socket.on("messageSend", function (details) {
+      console.log(details)
+      $.notify("Tutor Post Assignment\n" + "Name:" + details.Name, {
+        autoHide: false,
+        className: "success"
+      })
     })
-  })
 
-
-
-
-</script>
+  </script>

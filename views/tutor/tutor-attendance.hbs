@@ -1,101 +1,52 @@
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if user}}
     {{>tutor-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
-
         <div class="row atttendance">
-                <div class="col-md-12 m-2 ">
-                    <h3>Attendance</h3>
-                </div>
-                <div class="col-md-12 d-flex justify-content-center ">
-                    <div class="form-group row  ">
-                        <label for="example-date-input" class="col-2 col-form-label ">Date</label>
-                           <form action="/tutor-attendance" method="post">
+            <div class="col-md-12 m-2 ">
+                <h3>Attendance</h3>
+            </div>
+            <div class="col-md-12 d-flex justify-content-center ">
+                <div class="form-group row  ">
+                    <label for="example-date-input" class="col-2 col-form-label ">Date</label>
+                    <form action="/tutor-attendance" method="post">
                         <div class="col-10 d-flex justify-content-start">
-                         
-                            <input class="form-control " type="date" value="" name="date" onchange="return dateChange(this.value)"
-                                id="datePicker" min="2020-01-01" max="2020-12-31" required>
-                                <button type="submit" class="btn btn-success">Search</button>
-                                
+                            <input class="form-control " type="date" value="" name="date"
+                                onchange="return dateChange(this.value)" id="datePicker" min="2021-01-01"
+                                max="2021-12-31" required>
+                            <button type="submit" class="btn btn-success">Search</button>
                         </div>
-                        </form>
-                    </div>
-
+                    </form>
                 </div>
             </div>
-            <div class="row mt-5">
-                <div class="col-md-12">
-                    <table class="table table-striped text-center">
-                        <thead>
-                            <tr>
-                                <th scope="col" width=30%>Rollno</th>
-                                <th scope="col" width=40%>Name</th>
-                                <th scope="col" width=30%>Attendance</th>
-
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
-                       
-                            {{#each attendance}}
-                            <tr>
-                                <th scope="row">{{inc @index}} </th>
-                                <td>{{this.Name}}</td>
-                                <td>{{this.Attendance.Attendance}}</td>
-
-                            </tr>
-                            {{/each}}
-                            
-                      
-
-                        </tbody>
-                        
-                    </table>
-                </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <table class="table table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col" width=30%>Rollno</th>
+                            <th scope="col" width=40%>Name</th>
+                            <th scope="col" width=30%>Attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each attendance}}
+                        <tr>
+                            <th scope="row">{{inc @index}} </th>
+                            <td>{{this.Name}}</td>
+                            <td>{{this.Attendance.Attendance}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
             </div>
-
-        
-     
-    <!-- /#page-content-wrapper -->
-
-</div>
+        </div>
+        <!-- /#page-content-wrapper -->
+    </div>
 </div>
 <!-- /#wrapper -->
-
-
-
-
-{{!-- <script>
-
-    $('input[type="date"]').change(function () {
-        alert(this.value.split("-").reverse().join("-"));
-    });
-
-    function dateChange(value) {
-        $.ajax({
-            url: "/tutor-attendance",
-
-            method: 'put',
-            data: {
-                Date: value
-            },
-            success: function (attendance) {
-                
-             
-                alert(attendance)
-                location.reload()
-
-
-            }
-        });
-
-
-    };
-</script> --}}

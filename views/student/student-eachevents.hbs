@@ -1,183 +1,167 @@
-
-
 <div class="d-flex" id="wrapper">
-
     <!-- Sidebar -->
     {{#if students}}
     {{>student-sidenav}}
     {{/if}}
     <!-- /#sidebar-wrapper -->
-
     <!-- Page Content -->
-
     <div class="container-fluid">
-       <div class="row topic ">
-                <div class="col-md-6">
-                    <div class="col-md-12 m-2 ">
-                        <div class="alert alert-secondary  text-center" role="alert">
-                            <div class="row h-100">
-                                <div class="col-md-3">
-                                    <h4 class="">Event Name</h4>
-                                </div>
-                                <div class="col-md-9">
-
-                                    <h5 class="">{{eachevent.EventName}}</h5>
-                                </div>
+        <div class="row topic ">
+            <div class="col-md-6">
+                <div class="col-md-12 m-2 ">
+                    <div class="alert alert-secondary  text-center" role="alert">
+                        <div class="row h-100">
+                            <div class="col-md-3">
+                                <h4 class="">Event Name</h4>
                             </div>
-
-
-                        </div>
-                    </div>
-                    <div class="col-md-12 m-2 ">
-                        <div class="alert alert-secondary text-center" role="alert">
-                            <div class="row h-100">
-                                <div class="col-md-3">
-                                    <h5 class="">Topic:</h5>
-                                </div>
-                                <div class="col-md-9">
-
-                                    <p class="mt-3">{{eachevent.Topic}}</p>
-                                </div>
-                            </div </div>
-                        </div>
-
-
-
-                    </div>
-                    <div class="col-md-12 m-2 ">
-                        <div class="alert alert-secondary text-center" role="alert">
-                            <div class="row h-100">
-                                <div class="col-md-3">
-                                    <h5 class="">ConductingBy:</h5>
-                                </div>
-                                <div class="col-md-9">
-
-                                    <p class="mt-3">{{eachevent.ConductingBy}}</p>
-                                </div>
-
+                            <div class="col-md-9">
+                                <h5 class="">{{eachevent.EventName}}</h5>
                             </div>
                         </div>
-
-
-
-                    </div>
-                    <div class="col-md-12 m-2 ">
-                        <div class="alert alert-secondary text-center" role="alert">
-                            <div class="row h-100">
-                                <div class="col-md-3">
-                                    <h5 class="">Event Date:</h5>
-                                </div>
-                                <div class="col-md-9">
-
-                                    <p class="mt-3">{{eachevent.EventDate}}</p>
-                                </div>
-                            </div>
-                        </div>
-
-
-
                     </div>
                 </div>
-                {{#ifvalue eachevent.EventType value="Paid"}}
-                <div class="col-md-6">
-                    <div class="alert alert-primary text-dark p-3" style="height: 100%;" role="alert">
-                        <h4 class="text-center">Paid Event</h4>
-                        <hr>
-                        <h5><b>Price :</b> <span>Rs.{{eachevent.Price}}</span></h5>
-
-                        <hr>
-                        <p>Payment method</p>
-                        <form action="/student/paynow" method="POST" id="eventBook">
-                            <input type="text" id="eventId" name="eventId" value="{{eachevent._id}}" hidden>
-                            <input type="text" id="eventPrice" name="eventPrice" value="{{eachevent.Price}}" hidden>
-                            <input type="text" id="EventName" name="EventName" value="{{eachevent.EventName}}" hidden>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="paymentmethod" id="exampleRadios1"
-                                    value="RazorPay" checked>
-                                <label class="form-check-label" for="exampleRadios1">
-                                    RazorPay
-                                </label>
+                <div class="col-md-12 m-2 ">
+                    <div class="alert alert-secondary text-center" role="alert">
+                        <div class="row h-100">
+                            <div class="col-md-3">
+                                <h5 class="">Topic:</h5>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="paymentmethod" id="exampleRadios2"
-                                    value="Paytm">
-                                <label class="form-check-label" for="exampleRadios2">
-                                    Paytm
-                                </label>
+                            <div class="col-md-9">
+                                <p class="mt-3">{{eachevent.Topic}}</p>
                             </div>
-                            <div class="form-check ">
-                                <input class="form-check-input" type="radio" name="paymentmethod" id="exampleRadios2"
-                                    value="Paypal">
-                                <label class="form-check-label" for="exampleRadios2">
-                                    Paypal
-                                </label>
-                            </div>
-                         
-
-                            <button id="rzp-button1" >RazorPay</button>
-
-                                 <div id="paypal-button"></div>
-                            <button class="btn btn-primary mt-5" type="submit">Book now</button>
-
-                        </form>
-                     
-
-
+                        </div </div>
                     </div>
+                </div>
+                <div class="col-md-12 m-2 ">
+                    <div class="alert alert-secondary text-center" role="alert">
+                        <div class="row h-100">
+                            <div class="col-md-3">
+                                <h5 class="">ConductingBy:</h5>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="mt-3">{{eachevent.ConductingBy}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 m-2 ">
+                    <div class="alert alert-secondary text-center" role="alert">
+                        <div class="row h-100">
+                            <div class="col-md-3">
+                                <h5 class="">Event Date:</h5>
+                            </div>
+                            <div class="col-md-9">
+                                <p class="mt-3">{{eachevent.EventDate}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{#ifvalue eachevent.EventType value="Paid"}}
+            {{#if booked}}
+            <div class="col-md-6 ">
+                <div class="alert alert-primary text-dark p-3  d-flex align-content-center flex-wrap d-flex justify-content-center "
+                    style="height: 100%;" role="alert">
+                    <div class="">
+                        <h1><b>Already Booked </b> </h1>
+                    </div>
+                </div>
+            </div>
+            {{else}}
+            <div class="col-md-6">
+                <div class="alert alert-primary text-dark p-3" style="height: 100%;" role="alert">
+                    <h4 class="text-center">Paid Event</h4>
+                    <hr>
+                    <h5><b>Price :</b> <span>Rs.{{eachevent.Price}}</span></h5>
+                    <hr>
+                    <p>Payment method</p>
+                    <form action="/student/paynow" method="POST" id="eventBook">
+                        <input type="text" id="eventId" name="eventId" value="{{eachevent._id}}" hidden>
+                        <input type="text" id="eventId" name="studentName" value="{{eachevent.Name}}" hidden>
+                        <input type="text" id="eventPrice" name="eventPrice" value="{{eachevent.Price}}" hidden>
+                        <input type="text" id="EventName" name="EventName" value="{{eachevent.EventName}}" hidden>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentmethod" id="exampleRadios1"
+                                value="RazorPay" checked hidden>
+                            {{!-- <label class="form-check-label" for="exampleRadios1">
+                                RazorPay
+                            </label> --}}
+                        </div>
+                        {{!-- <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentmethod" id="exampleRadios2"
+                                value="Paytm">
+                            <label class="form-check-label" for="exampleRadios2">
+                                Paytm
+                            </label>
+                        </div> --}}
+                        {{!-- <div class="form-check ">
+                            <input class="form-check-input" type="radio" name="paymentmethod" id="exampleRadios2"
+                                value="Paypal">
+                            <label class="form-check-label" for="exampleRadios2">
+                                Paypal
+                            </label>
+                        </div> --}}
+                      
 
+                      
+                        {{!-- <button class="btn btn-primary mt-5" type="submit">Book now</button> --}}
+                          <button id="rzp-button1" class="mb-2" type="submit">RazorPay</button>
                             
+                    </form>
+                    <form action="/student/paytm" method="POST">
+                            <input type="text" id="eventId" name="eventId" value="{{eachevent._id}}" hidden>
+                        <input type="text" id="eventId" name="studentName" value="{{eachevent.Name}}" hidden>
+                        <input type="text" id="eventPrice" name="eventPrice" value="{{eachevent.Price}}" hidden>
+                        <input type="text" id="EventName" name="EventName" value="{{eachevent.EventName}}" hidden>
+                        <input type="text" id="EventName" name="email" value="{{student.Email}}" hidden>
+                        <input type="text" id="EventName" name="phone" value="{{student.Mobile}}" hidden>
+                       
+                      
 
+                        <button id="rzp-button1" class="mb-3" type="submit">Paytm</button>
+                        <div id="paypal-button" ></div>
 
+                    </form>
+                </div>
+            </div>
+            {{/if}}
+            {{/ifvalue}}
+
+            {{#ifvalue eachevent.EventType value="free"}} <div class="col-md-6 ">
+                <div class="alert alert-primary text-dark p-3  d-flex align-content-center flex-wrap d-flex justify-content-center "
+                    style="height: 100%;" role="alert">
+
+                    <div class="">
+                        <h1><b>Free Event</b> </h1>
+                    </div>
 
                 </div>
                 {{/ifvalue}}
-
-
-                {{#ifvalue eachevent.EventType value="free"}}
-                <div class="col-md-6 ">
-                    <div class="alert alert-primary text-dark p-3  d-flex align-content-center flex-wrap d-flex justify-content-center "
-                        style="height: 100%;" role="alert">
-
-                        <div class="">
-                            <h1><b>Free Event</b> </h1>
-                        </div>
-
-                    </div>
-                    {{/ifvalue}}
-
-
-
-
-
+            </div>
+            <div class="row mt-3">
+                {{#if eachevent.ImageAddress}}
+                <div class="col-md-6">
+                    <p>Image</p>
+                    <img src="/{{eachevent.ImageAddress}}" style="width: 100%;height: 220px;" alt="">
                 </div>
-
-                <div class="row mt-3">
-                    {{#if eachevent.ImageAddress}}
-                    <div class="col-md-6">
-                        <p>Image</p>
-                        <img src="/{{eachevent.ImageAddress}}" style="width: 100%;height: 220px;" alt="">
-                    </div>
-                    {{/if}}
-                    {{#if eachevent.VideoAddress}}
-                    <div class="col-md-6">
-                        <p>Video</p>
-                        <video controls src="/{{eachevent.VideoAddress}}" style="width: 100%; height: 220px;"></video>
-                    </div>
-                    {{/if}}
-                    {{#if eachevent.pdfAddress}}
-                    <div class="col-md-6">
-                        <p>PDf</p>
-                        <embed src="/{{eachevent.pdfAddress}}" style="width: 100%; height: 220px;">
-                    </div>
-                    {{/if}}
-
+                {{/if}}
+                {{#if eachevent.VideoAddress}}
+                <div class="col-md-6">
+                    <p>Video</p>
+                    <video controls src="/{{eachevent.VideoAddress}}" style="width: 100%; height: 220px;"></video>
                 </div>
-
-            </div><!-- /#page-content-wrapper -->
-
+                {{/if}}
+                {{#if eachevent.pdfAddress}}
+                <div class="col-md-6">
+                    <p>PDf</p>
+                    <embed src="/{{eachevent.pdfAddress}}" style="width: 100%; height: 220px;">
+                </div>
+                {{/if}}
+            </div>
+        </div><!-- /#page-content-wrapper -->
     </div>
 </div>
-    <!-- /#wrapper -->
+<!-- /#wrapper -->
 
 
 
@@ -186,35 +170,30 @@
 
 
 <script>
+    $("#eventBook").submit((e) => {
+        e.preventDefault()
+        $.ajax({
+            type: "POST",
+            url: "/student/eachevent",
+            data: $('#eventBook').serialize(),
+
+            success: (resp) => {
+                if (resp.razorpay) {
+                    alert(resp.response.id);
+                    razorpayPayment(resp.response)
+
+                }
+                else if (resp.paypal) {
+                    //  paytm()
+                    alert("jhdhd");
 
 
-
-  
-
-     $("#eventBook").submit((e) => {
-    e.preventDefault()
-    $.ajax({
-        type: "POST",
-        url: "/student/eachevent",
-        data: $('#eventBook').serialize(),
-
-        success: (resp) => {
-            if (resp.razorpay) {
-                alert(resp.response.id);
-                razorpayPayment(resp.response)
-
+                }
+                else {
+                    alert('ddddddddddddd')
+                }
             }
-            else if (resp.paypal) {
-                //  paytm()
-                alert("jhdhd");
-
-
-            }
-            else {
-                alert('ddddddddddddd')
-            }
-        }
-    });
+        });
 
     })
     //Razorpay
@@ -285,39 +264,40 @@
 
 </script>
 
-  
+
 
 
 <script>
-  
-var  amount = document.getElementById('eventPrice').value
-  var  Name = document.getElementById('EventName').value
-  paypal.Button.render({
-    env: 'sandbox', // Or 'production'
-    // Set up the payment:
-    // 1. Add a payment callback
-    payment: function(data, actions) {
-      // 2. Make a request to your server
-      
-      return actions.request.post('/student/paypal-payment',{
-      amount: amount, name:Name})
-        .then(function(res) {
-          // 3. Return res.id from the response
-          return res.id;
-          console.log(res.id)
-        });
-    },
-    // Execute the payment:
-    // 1. Add an onAuthorize callback
-    onAuthorize: function(data, actions) {
-      // 2. Make a request to your server
-      return actions.request.post('/student/execute-paypal-payment/', {
-        paymentID: data.paymentID,
-        payerID:   data.payerID
-      })
-        .then(function(res) {
-          // 3. Show the buyer a confirmation message.
-        });
-    }
-  }, '#paypal-button');
+
+    var amount = document.getElementById('eventPrice').value
+    var Name = document.getElementById('EventName').value
+    paypal.Button.render({
+        env: 'sandbox', // Or 'production'
+        // Set up the payment:
+        // 1. Add a payment callback
+        payment: function (data, actions) {
+            // 2. Make a request to your server
+
+            return actions.request.post('/student/paypal-payment', {
+                amount: amount, name: Name
+            })
+                .then(function (res) {
+                    // 3. Return res.id from the response
+                    return res.id;
+                    console.log(res.id)
+                });
+        },
+        // Execute the payment:
+        // 1. Add an onAuthorize callback
+        onAuthorize: function (data, actions) {
+            // 2. Make a request to your server
+            return actions.request.post('/student/execute-paypal-payment/', {
+                paymentID: data.paymentID,
+                payerID: data.payerID
+            })
+                .then(function (res) {
+                    // 3. Show the buyer a confirmation message.
+                });
+        }
+    }, '#paypal-button');
 </script>
