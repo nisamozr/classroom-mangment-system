@@ -16,10 +16,10 @@
             <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
           </ol>
           <div class="carousel-inner">
-            <div class="carousel-item active">
+            <div class="carousel-item active h-100">
               <a href="/toutor-photoAlbum">
                 {{#if photo1}}
-                <img src="{{photo1.Photos.FileAddress }}" class="d-block w-100" alt="...">
+                <img src="{{photo1.Photos.FileAddress }}" class="d-block w-100 h-100" alt="...">
                 {{else}}
                 <img src="/images/background/default-cover.png" class="d-block w-100" alt="...">
 
@@ -66,7 +66,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12 col-lg-6">
         <div class="dash ">
           <h5>Announcerments</h5>
           <hr>
@@ -79,7 +79,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-md-12 col-lg-6">
         <div class="dash ">
           <h5>Events</h5>
           <hr>

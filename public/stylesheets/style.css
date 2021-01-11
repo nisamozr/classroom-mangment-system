@@ -59,20 +59,28 @@ a {
 
 .bg {
   background-image: url("/images/background/classroom-wallpaper.png");
-  height: 100vh;
+  min-height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 100px;
+}
+.tutororStudentimg  {
+
+  width: 300px;
+  height:250px;
+  align-items: center;
+  border-radius: 10%;
 }
 .tutororStudentimg img {
   width: 200px;
   align-items: center;
   border-radius: 50%;
 }
+
 /* login page */
 .login {
-  width: 30%;
+  width: 40%;
   color: #ffffff;
   margin: 0 auto;
 }
@@ -110,6 +118,7 @@ footer {
 footer span {
   font-weight: bold;
 }
+
 /* sidebar and header */
 #wrapper {
   overflow-x: hidden;
@@ -139,6 +148,71 @@ footer span {
 
 #wrapper.toggled #sidebar-wrapper {
   margin-left: 0;
+}
+@media only screen and (min-device-width: 200px) and (max-device-width: 768px) {
+  .tutororStudentimg  {
+    margin-top: 100px;
+    width: 95%;
+    height:400px;
+    align-items: center;
+    border-radius: 10%;
+  }
+  .tutororStudentimg img{
+    padding: 20px;
+    width: 70%;
+    height:330px;
+
+  }
+  .login {
+    
+    width:90%;
+    height: 500px;
+    color: #ffffff;
+    margin: 400px auto;
+    
+    
+  }
+  input{
+    height: 60px;
+    margin-bottom: 10px;
+  }
+  label{
+    font-size: 24px;
+
+  }
+  button ,a{
+  
+    height: 50px;
+    margin-bottom: 10px;
+  
+
+  }
+  h1{
+    font-size: 55px;
+  }
+  .card-text{
+    margin-top: 100px;
+    font-size: 35px;
+    color: azure;
+    font-weight:bolder ;
+  }
+  .dash {
+    width: 100%;
+    height: 500px;
+    background-color: #aaaaaa;
+    border-radius: 10px;
+    margin: 20px 0;
+    padding: 10px 5px;
+    color: rgb(9, 22, 34);
+  }
+  #sidebar-wrapper{
+    width: 100%;
+
+  }
+  
+
+ 
+  
 }
 
 /* Profile */
@@ -309,35 +383,8 @@ strong {
 
 /* 
 @media (max-width: 850px) {
-  .sidenav {
-    display: none;
-  }
-  .main {
-    margin-left: 0;
-  }
-  .slide {
-    height: 250px;
-  }
-  .mobile {
-    display: block;
-  }
-  .computer {
-    display: none;
-  }
-}
-
-
-@media (min-width: 768px) {
-  #sidebar-wrapper {
-    margin-left: 0;
-  }
-
-  #page-content-wrapper {
-    min-width: 0;
-    width: 100%;
-  }
-
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
-  }
+ 
 } */
+
+
+ 
