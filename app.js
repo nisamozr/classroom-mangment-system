@@ -68,9 +68,14 @@ app.use(
   session({
     secret: "key",
     store: new MongoStore({
-      url: "mongodb://localhost/classroom",
-      ttl: 4 * 24 * 60 * 60,
+      url: "mongodb+srv://nisamozr:TRradk1nGzwceVGx@cluster0.gk83i.mongodb.net/classroom?retryWrites=true&w=majority",
+      // ttl: 4 * 24 * 60 * 60,
     }),
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7 * 2, // two weeks
+    },
   })
 );
 io.on("connection", (socket) => {
