@@ -2,9 +2,9 @@ const mongoClient = require('mongodb').MongoClient
 const state={
     db:null
 }
-const mongodb ="mongodb+srv://nisam:101415as@cluster0.onk0e.mongodb.net/classroom?retryWrites=true&w=majority"
+// const mongodb ="mongodb+srv://nisamozr:TRradk1nGzwceVGx@cluster0.gk83i.mongodb.net/classroom?retryWrites=true&w=majority"
 module.exports.connect=function(done){
-    const url=process.env.MONGODB_URI||mongodb||'mongodb://localhost:27017'
+    const url=process.env.MONGODB_URI||'mongodb://localhost:27017'
     const dbname = 'classroom'
 
     mongoClient.connect(url,(err,data)=>{
