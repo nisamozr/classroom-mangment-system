@@ -118,7 +118,7 @@ io.on("connection", (socket) => {
   });
 });
 
-db.connect((err) => {
+ db.connect((err) => {
   if (err) console.log("not connected err");
   else console.log("database success");
 });
