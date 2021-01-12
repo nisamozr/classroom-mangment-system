@@ -198,17 +198,18 @@ footer span {
   }
   .dash {
     width: 100%;
-    height: 500px;
+    height: 700px;
     background-color: #aaaaaa;
     border-radius: 10px;
     margin: 20px 0;
     padding: 10px 5px;
     color: rgb(9, 22, 34);
   }
-  #sidebar-wrapper{
+  .carousel-inner {
     width: 100%;
+    height: 700px;
+}
 
-  }
   
 
  
