@@ -73,7 +73,7 @@ function videotoggel() {
   }
 }
 //pdf
-var loaddfFile = function (event) {
+var loadpdfFile = function (event) {
   var output = document.getElementById("pdfDoc");
   output.src = URL.createObjectURL(event.target.files[0]);
   output.onload = function () {
