@@ -134,10 +134,14 @@
                 var percentVal = '100%';
                 bar.width(percentVal)
                 percent.html(percentVal);
+               
+                
             },
             complete: function (xhr) {
                 status.html(xhr.responseText);
+                
             }
+             location.reload();
         });
 
 

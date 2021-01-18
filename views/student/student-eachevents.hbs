@@ -75,9 +75,9 @@
                     <h5><b>Price :</b> <span>Rs.{{eachevent.Price}}</span></h5>
                     <hr>
                     <p>Payment method</p>
-                    <form action="/student/paynow" method="POST" id="eventBook">
+                    <form action="/student/eachevent" method="POST" id="eventBook">
                         <input type="text" id="eventId" name="eventId" value="{{eachevent._id}}" hidden>
-                        <input type="text" id="eventId" name="studentName" value="{{eachevent.Name}}" hidden>
+                        <input type="text" id="eventId" name="studentName" value="{{student.Name}}" hidden>
                         <input type="text" id="eventPrice" name="eventPrice" value="{{eachevent.Price}}" hidden>
                         <input type="text" id="EventName" name="EventName" value="{{eachevent.EventName}}" hidden>
                         <div class="form-check">
@@ -110,7 +110,7 @@
                     </form>
                     <form action="/student/paytm" method="POST">
                             <input type="text" id="eventId" name="eventId" value="{{eachevent._id}}" hidden>
-                        <input type="text" id="eventId" name="studentName" value="{{eachevent.Name}}" hidden>
+                        <input type="text" id="eventId" name="studentName" value="{{student.Name}}" hidden>
                         <input type="text" id="eventPrice" name="eventPrice" value="{{eachevent.Price}}" hidden>
                         <input type="text" id="EventName" name="EventName" value="{{eachevent.EventName}}" hidden>
                         <input type="text" id="EventName" name="email" value="{{student.Email}}" hidden>

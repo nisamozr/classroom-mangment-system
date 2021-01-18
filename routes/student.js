@@ -406,22 +406,27 @@ router.post('/verify-payment', (req, res) => {
   })
 })
 router.post('/paytm', [parseUrl, parseJson], (req, res) => {
-  console.log(req.body)
+  
   // For Staging 
   if (!req.body.eventPrice || !req.body.email || !req.body.phone) {
     res.status(400).send('Payment failed')
   } else {
+
+    paytmstd = req.session.student;
+  payedEventId = req.body;
     var params = {};
-    params['MID'] = config.PaytmConfig.mid;
-    params['WEBSITE'] = config.PaytmConfig.website;
+    params['MID'] = 'AKlFNW11785226604992';
+    params['WEBSITE'] = 'WEBSTAGING';
     params['CHANNEL_ID'] = 'WEB';
     params['INDUSTRY_TYPE_ID'] = 'Retail';
     params['ORDER_ID'] = 'TEST_' + new Date().getTime();
-    params['CUST_ID'] = 'customer_001';
+    params['CUST_ID'] = req.session.student._id;
     params['TXN_AMOUNT'] = req.body.eventPrice + "";
-    params['CALLBACK_URL'] = 'http://localhost:3000/student/callback';
+    params['CALLBACK_URL'] = 'http://localhost:3000/student/callback' || 'https://classroommenagement.herokuapp.com/student/callback';
     params['EMAIL'] = req.body.email;
-    params['MOBILE_NO'] = req.body.phone + "";
+    params['MOBILE_NO'] = req.body.phone ;
+
+    let key = "0v5nBBkT#kXOJoLt";
 
 
     checksum_lib.genchecksum(params, config.PaytmConfig.key, function (err, checksum) {
@@ -442,77 +447,31 @@ router.post('/paytm', [parseUrl, parseJson], (req, res) => {
 
 })
 
-router.post('/callback', (req, res) => {
+router.post('/callback', async(req, res) => {
   
-    var body = '';
-  
-    req.on('data', function (data) {
-       body += data;
+  let data = req.body;
+  console.log(data)
+  if (data.STATUS == "TXN_SUCCESS") {
+    await studentHelpers.bookEvent( payedEventId,paytmstd._id).then((r) => {
+      paytmstd = "";
+      payedEventId = "";
+      let rep = {
+        Trn_id: data.ORDERID,
+        Method: "PAYTM",
+        Date: new Date().toLocaleDateString(),
+        Amount: data.TXNAMOUNT,
+      };
+      res.redirect("/student/events");
     });
-    console.log("def")
-  
-     req.on('end', function () {
-       var html = "";
-       var post_data = qs.parse(body);
-  
-       // received params in callback
-       console.log('Callback Response: ', post_data, "\n");
-  
-  
-       // verify the checksum
-       var checksumhash = post_data.CHECKSUMHASH;
-       // delete post_data.CHECKSUMHASH;
-       var result = checksum_lib.verifychecksum(post_data, config.PaytmConfig.key, checksumhash);
-       console.log("Checksum Result => ", result, "\n");
-  
-  
-       // Send Server-to-Server request to verify Order Status
-       var params = {"MID": config.PaytmConfig.mid, "ORDERID": post_data.ORDERID};
-  
-       checksum_lib.genchecksum(params, config.PaytmConfig.key, function (err, checksum) {
-  
-         params.CHECKSUMHASH = checksum;
-         post_data = 'JsonData='+JSON.stringify(params);
-  
-         var options = {
-           hostname: 'securegw-stage.paytm.in', // for staging
-           // hostname: 'securegw.paytm.in', // for production
-           port: 443,
-           path: '/merchant-status/getTxnStatus',
-           method: 'POST',
-           headers: {
-             'Content-Type': 'application/x-www-form-urlencoded',
-             'Content-Length': post_data.length
-           }
-         };
-  
-  
-         // Set up the request
-         var response = "";
-         var post_req = https.request(options, function(post_res) {
-           post_res.on('data', function (chunk) {
-             response += chunk;
-           });
-  
-           post_res.on('end', function(){
-             console.log('S2S Response: ', response, "\n");
-  
-             var _result = JSON.parse(response);
-               if(_result.STATUS == 'TXN_SUCCESS') {
-                   res.send('payment sucess')
-               }else {
-                   res.send('payment failed')
-               }
-             });
-         });
-  
-         // post the data
-         post_req.write(post_data);
-         post_req.end();
-        });
-       });
- 
-
+  } else {
+    console.log(data);
+    payedEventId = "";
+    res.send(
+      "<center><h2>Payment Failled</h2></br> " +
+        data.RESPMSG +
+        '</br><a href="/student/events">Go Back..</a></center>'
+    );
+  }
   
 });
 

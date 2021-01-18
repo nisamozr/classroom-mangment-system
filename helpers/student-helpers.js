@@ -484,6 +484,7 @@ module.exports = {
     });
   },
   bookEvent: (book, userId) => {
+   
     return new Promise((resolve, reject) => {
       let booknow = {
         StudentId: objectId(userId),
@@ -505,6 +506,7 @@ module.exports = {
         });
     });
   },
+
   getBooked: (StudenId, event) => {
     return new Promise((resolve, reject) => {
       db.get()
