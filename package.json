@@ -33,6 +33,7 @@
     "jimp": "^0.16.1",
     "messagebird": "^3.5.0",
     "mongodb": "^3.6.3",
+    "mongoose": "^6.0.8",
     "monodb": "^1.4.2",
     "morgan": "~1.9.1",
     "multer": "^1.4.2",

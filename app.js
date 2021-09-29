@@ -68,8 +68,11 @@ app.use(
   session({
     secret: "key",
     store: new MongoStore({
-      url: "mongodb+srv://nisamozr:TRradk1nGzwceVGx@cluster0.gk83i.mongodb.net/classroom?retryWrites=true&w=majority",
-      // ttl: 4 * 24 * 60 * 60,
+      // url: "mongodb+srv://nisamozr:TRradk1nGzwceVGx@cluster0.gk83i.mongodb.net/classroom?retryWrites=true&w=majority",
+      url: "mongodb+srv://nisamozr:12345678as@cluster0.fu2zc.mongodb.net/classroom?retryWrites=true&w=majority",
+      // url: "mongodb://localhost:27017",
+     
+      ttl: 20 * 24 * 60 * 60,
     }),
     resave: false,
     saveUninitialized: false,
